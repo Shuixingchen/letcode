@@ -6,6 +6,10 @@ import (
 )
 
 func main(){
-	res := util.SolveNQueens(5)
+	aa := [][]int{
+		[]int{1},
+		[]int{0},
+	}
+	res := util.UniquePathsWithObstacles(aa)
 	fmt.Println(res)
 }
