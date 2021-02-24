@@ -6,6 +6,11 @@ type Transaction struct {
 	Amount float64
 }
 
+//输入
+type TxIn struct {
+
+}
+
 func CreateTransaction(from string, to string, amount float64) *Transaction{
 	return &Transaction{
 		From:from,

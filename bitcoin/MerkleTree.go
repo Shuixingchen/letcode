@@ -5,6 +5,7 @@ type MTree struct {
 	Transactions []*Transaction
 }
 
+//把当前要打包的交易生成一个merkletree
 func CreateMTree(transactions []*Transaction) *MTree{
 
 	return &MTree{
