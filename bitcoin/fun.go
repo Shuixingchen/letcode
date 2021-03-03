@@ -1,16 +1,19 @@
 package bitcoin
 
 import (
+	"bytes"
 	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
 	"crypto/x509"
+	"encoding/binary"
 	"encoding/hex"
 	"encoding/json"
 	"encoding/pem"
 	"errors"
 	"fmt"
+	"log"
 )
 
 func GetSHA256HashCode(data interface{}) string{
@@ -100,6 +103,16 @@ func RsaVerySignWithSha256(data string, signData string, pubkey []byte) bool {
 		panic(err)
 	}
 	return true
+}
+
+
+func IntToHex(num int64) []byte {
+	buff := new(bytes.Buffer)
+	err := binary.Write(buff, binary.BigEndian, num)
+	if err != nil {
+		log.Panic(err)
+	}
+	return buff.Bytes()
 }
 
 

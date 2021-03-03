@@ -11,7 +11,7 @@ func main(){
 	//sign := bitcoin.RsaSignWithSha256(data,pri)
 	//res := bitcoin.RsaVerySignWithSha256(data,sign,pub)
 	bc := bitcoin.CreateBlockChain()
-	bc.AddBlock("add block1")
-	bc.AddBlock("add block2")
+	bc.AddBlock([]byte("add block1"))
+	bc.AddBlock([]byte("add block2"))
 	bc.Print()
 }
