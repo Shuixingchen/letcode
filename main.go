@@ -1,17 +1,15 @@
 package main
 
 import (
-	"letcode/bitcoin"
+	"fmt"
+	"letcode/bitcoin/db"
 )
 
 func main(){
-	//res := bitcoin.GetSHA256HashCode([]byte("aaa"))
-	//pri,pub := bitcoin.GenRsaKey()
-	//data := "aadfadf";
-	//sign := bitcoin.RsaSignWithSha256(data,pri)
-	//res := bitcoin.RsaVerySignWithSha256(data,sign,pub)
-	bc := bitcoin.CreateBlockChain()
-	bc.AddBlock([]byte("add block1"))
-	bc.AddBlock([]byte("add block2"))
-	bc.Print()
+	db := db.CreateDb()
+	fmt.Println(db)
+	//bc := bitcoin.CreateBlockChain()
+	//bc.AddBlock([]byte("add block1"))
+	//bc.AddBlock([]byte("add block2"))
+	//bc.Print()
 }
