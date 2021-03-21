@@ -60,6 +60,7 @@ func (b *BlockChain)AddBlock(data []*Transaction){
 	b.blocks = append(b.blocks,block)
 }
 
+
 func (bc *BlockChain) FindSpendableOutputs(address string, amount int) (int, map[string][]int) {
 	unspentOutputs := make(map[string][]int)
 	unspentTXs := bc.FindUnspentTransactions(address)
@@ -84,9 +85,15 @@ Work:
 	return accumulated, unspentOutputs
 }
 
+/*查询没有使用的交易输出，类似与查询某个地址的余额。
+区块链没有账号统计，所以需要对整条链遍历，输入表示使用，输出表示得到。
+对所有transaction的输出遍历，把属于这个address的transaction写入到unspentTXs;
+对所有transaction的输入遍历，把属于这个address已经花的output写入到spentTXOs;
+*/
+
 func (bc *BlockChain) FindUnspentTransactions(address string) []Transaction{
 	var unspentTXs []Transaction
-	spentTXOs := make(map[string][]int)
+	spentTXOs := make(map[string][]int)//transactionId=>[output的下标]
 
 	for _,block := range bc.blocks {
 		for _,tx := range block.Transactions {
@@ -101,16 +108,17 @@ func (bc *BlockChain) FindUnspentTransactions(address string) []Transaction{
 							}
 						}
 					}
-					if out.CanBeUnlockedWith(address) {
+					if out.CanBeUnlockedWith(address) { //是否属于这个地址的输出
 						unspentTXs = append(unspentTXs, *tx)
 					}
 				}
 
 				if tx.IsCoinbase() == false {
 					for _, in := range tx.Vin {
+						//find spend output
 						if in.CanUnlockOutputWith(address) {
 							inTxID := hex.EncodeToString(in.Txid)
-							spentTXOs[inTxID] = append(spentTXOs[inTxID], in.Vout)
+							spentTXOs[inTxID] = append(spentTXOs[inTxID], in.Voutkey)
 						}
 					}
 				}

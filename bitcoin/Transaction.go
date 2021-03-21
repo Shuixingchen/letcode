@@ -17,13 +17,13 @@ type Transaction struct {
 }
 
 type TXInput struct{
-	Txid      []byte
-	Vout      int
-	ScriptSig string
+	Txid      []byte //上个交易的transactionid
+	Voutkey      int //上个交易的输出下标
+	ScriptSig string //简化验证，直接存付款人的address
 }
 type TXOutput struct {
 	Value        int
-	ScriptPubKey string
+	ScriptPubKey string //简化验证，直接存收款人的address
 }
 
 //创建一个铸币交易,不需要输入，输出把奖励写到地址即可
@@ -38,9 +38,12 @@ func NewCoinbaseTX(to, data string) *Transaction {
 	return &tx
 }
 
+//
 func (in *TXInput) CanUnlockOutputWith(unlockingData string) bool {
 	return in.ScriptSig == unlockingData
 }
+
+//解锁这个输出，只有解锁成功，这个输出才能使，暂时用地址来解锁。传进来的地址和输出保存的地址一致，代表成功。
 func (out *TXOutput) CanBeUnlockedWith(unlockingData string) bool {
 	return out.ScriptPubKey == unlockingData
 }
