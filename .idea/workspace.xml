@@ -20,14 +20,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0053b6a0-eb3f-4d52-aa1f-e1e94ecbe3dd" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/bitcoin/config/config.toml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/bitcoin/db/BlockModel.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+=======
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/dataStruct/chain.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/backtrace.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataStruct/trieTree.go" beforeDir="false" afterPath="$PROJECT_DIR$/dataStruct/trieTree.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/Fibo.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/Fibo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/coinChange.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/coinChange.go" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/bitcoin/Pow.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bitcoin/db/Db.go" afterDir="false" />
+>>>>>>> 25e5984730e0889beb1979c1d9bbe67215d3074b
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitcoin/db/Db.go" beforeDir="false" afterPath="$PROJECT_DIR$/bitcoin/db/Db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+>>>>>>> 18a3565713a77a14833b46525c9161c7b9d528ac
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,6 +122,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -131,6 +148,7 @@
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
+>>>>>>> 18a3565713a77a14833b46525c9161c7b9d528ac
   <component name="ProjectId" id="1juD0wmTHLo3e4L3AUTb7Us0Giw" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -171,10 +189,21 @@
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../go-spider" />
+=======
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gin_websocket_barrage_system" />
+>>>>>>> 18a3565713a77a14833b46525c9161c7b9d528ac
+>>>>>>> 25e5984730e0889beb1979c1d9bbe67215d3074b
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="go.sdk" />
@@ -198,6 +227,8 @@
     </option>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+<<<<<<< HEAD
+=======
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
@@ -223,6 +254,7 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
+>>>>>>> 18a3565713a77a14833b46525c9161c7b9d528ac
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -232,6 +264,10 @@
         <entry key="MAIN">
           <value>
             <State>
+<<<<<<< HEAD
+              <option name="COLUMN_ORDER" />
+            </State>
+=======
               <option name="RECENTLY_FILTERED_USER_GROUPS">
                 <collection />
               </option>
@@ -253,6 +289,7 @@
         <entry key="User">
           <value>
             <list />
+>>>>>>> 18a3565713a77a14833b46525c9161c7b9d528ac
           </value>
         </entry>
       </map>

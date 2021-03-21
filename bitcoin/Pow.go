@@ -26,7 +26,7 @@ func (p *Pow)PrepareData(nonce int) []byte{
 	data := bytes.Join(
 		[][]byte{
 			p.block.PreHash,
-			p.block.Data,
+			p.block.HashTransactions(),
 			IntToHex(p.block.Timestamp),
 			IntToHex(int64(p.targetBits)),
 			IntToHex(int64(nonce)),

@@ -2,7 +2,7 @@ package util
 
 /*
 动态规划问题
-
+斐波那契数列
 */
 
 func Fibo(n int) int{

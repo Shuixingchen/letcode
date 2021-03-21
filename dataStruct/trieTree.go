@@ -29,3 +29,7 @@ func (t *Trie)Insert(word string) {
 	}
 	node.isEnd = true
 }
+
+func (t *Trie)Search(word string) {
+
+}

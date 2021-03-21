@@ -1,7 +1,6 @@
 package util
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -31,7 +30,6 @@ func CoinChange(coins []int, amount int) int {
 		}
 
 	}
-	fmt.Println(res,amount)
 	if amount > 0 {
 		return -1
 	}else{
