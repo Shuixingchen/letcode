@@ -8,6 +8,12 @@ import (
 	"time"
 )
 
+const(
+	bonus = 10
+	targetBits = 24
+)
+
+
 type Block struct {
 	Hash []byte
 	PreHash []byte
@@ -28,7 +34,7 @@ func CreateBlock(data []*Transaction, preHash []byte) *Block{
 		Timestamp:time.Now().Unix(),
 	}
 	//工作量证明
-	pow := NewPoW(newBlock,24)
+	pow := NewPoW(newBlock,targetBits)
 	noce,hash := pow.Run()
 	newBlock.Hash = hash
 	newBlock.Noce = noce
@@ -134,6 +140,7 @@ func (b *BlockChain)Print(){
 		fmt.Printf("pre hash:%x\n",block.PreHash)
 		fmt.Printf("data:%s\n",block.HashTransactions())
 		fmt.Printf("hash:%x\n",block.Hash)
+		fmt.Printf("createTime:%d\n",block.Timestamp)
 		fmt.Println()
 	}
 }

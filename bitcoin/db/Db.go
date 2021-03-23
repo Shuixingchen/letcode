@@ -6,6 +6,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
 	"log"
+	"os"
 )
 
 type Db struct {
@@ -23,9 +24,10 @@ func CreateDb() *Db{
 }
 
 func GetConfig(){
+	path, _ := os.Getwd()
 	viper.SetConfigName("config")
 	viper.SetConfigType("toml")
-	viper.AddConfigPath("./config/")
+	viper.AddConfigPath(path+"/../bitcoin/config/")
 	err := viper.ReadInConfig()
 	if err != nil {
 		log.Fatal("read config failed: %v", err)

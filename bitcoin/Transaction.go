@@ -6,9 +6,6 @@ import (
 	"log"
 )
 
-const(
-	bonus = 10
-)
 
 type Transaction struct {
 	ID   []byte
@@ -55,7 +52,7 @@ func NewUTXOTransaction(from, to string, amount int, bc *BlockChain) *Transactio
 	acc, validOutputs := bc.FindSpendableOutputs(from, amount)
 
 	if acc < amount {
-		log.Panic("ERROR: Not enough funds")
+		log.Panic("ERROR: Not enough funds from %s",from)
 	}
 	// Build a list of inputs
 	for txid, outs := range validOutputs {
