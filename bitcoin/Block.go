@@ -102,12 +102,12 @@ func (bc *BlockChain)FindUTXO() UTXO{
 					inTxID := hex.EncodeToString(in.Txid)
 					spentTXOs[inTxID] = append(spentTXOs[inTxID], in.Voutkey)
 					//delete has put in utxo
-					if outputkeys,ok := utxo[txID]; ok{
+					if outputkeys,ok := utxo[inTxID]; ok{
 						for k,outIdx:= range outputkeys {
 							if outIdx == in.Voutkey {
-								utxo[txID] = append(utxo[txID][:k], utxo[txID][k+1:]...) //从utxo中删除这个outIdx
-								if len(utxo[txID]) == 0 {
-									delete(utxo, txID)
+								utxo[inTxID] = append(utxo[inTxID][:k], utxo[inTxID][k+1:]...) //从utxo中删除这个outIdx
+								if len(utxo[inTxID]) == 0 {
+									delete(utxo, inTxID)
 								}
 							}
 						}
