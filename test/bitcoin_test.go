@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"letcode/bitcoin"
 	"testing"
 )
@@ -19,11 +20,22 @@ func TestCreateBitcoin(t *testing.T) {
 	bc.Print()
 }
 
-//func TestRsa(t *testing.T) {
-//	pri,pub := bitcoin.GenRsaKey()
-//	data := "aadfadf";
-//	sign := bitcoin.RsaSignWithSha256(data,pri)
-//	res := bitcoin.RsaVerySignWithSha256(data,sign,pub)
-//
-//	fmt.Print(res)
-//}
+func TestUTXO(t *testing.T){
+	bc := bitcoin.CreateBlockChain("from")
+	txone := bitcoin.NewUTXOTransaction("from","to", 1,bc)
+	transactions := []*bitcoin.Transaction{txone}
+	bc.AddBlock(transactions)
+	res := bc.FindUTXO()
+	res.Print()
+}
+
+
+
+func TestRsa(t *testing.T) {
+	pri,pub := bitcoin.GenRsaKey()
+	data := "aadfadf";
+	sign := bitcoin.RsaSignWithSha256(data,pri)
+	res := bitcoin.RsaVerySignWithSha256(data,sign,pub)
+
+	fmt.Print(res)
+}

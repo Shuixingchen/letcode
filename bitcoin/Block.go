@@ -10,7 +10,7 @@ import (
 
 const(
 	bonus = 10
-	targetBits = 24
+	targetBits = 4
 )
 
 
@@ -66,6 +66,58 @@ func (b *BlockChain)AddBlock(data []*Transaction){
 	b.blocks = append(b.blocks,block)
 }
 
+/*
+通过对区块进行迭代找到所有未花费输出
+transactionid=>uoutputs
+ */
+
+func (bc *BlockChain)FindUTXO() UTXO{
+	utxo := make(UTXO)
+	spentTXOs := make(map[string][]int)//transactionId=>[output的下标]
+
+	for _,block := range bc.blocks {
+		for _,tx := range block.Transactions {
+			txID := hex.EncodeToString(tx.ID)
+			unsedOutput := make([]int,0)
+		Outputs:
+			//遍历output,找出没有用的output
+			for outIdx, _ := range tx.Vout {
+				// Was the output spent?
+				if spentTXOs[txID] != nil {
+					for _, spentOut := range spentTXOs[txID] {
+						if spentOut == outIdx {
+							continue Outputs
+						}
+					}
+				}
+				//this output was not used
+				unsedOutput = append(unsedOutput, outIdx)
+			}
+			utxo[txID] = unsedOutput
+
+			//遍历input,找出已经使用的output
+			if tx.IsCoinbase() == false {
+				for _, in := range tx.Vin {
+					//find spend output
+					inTxID := hex.EncodeToString(in.Txid)
+					spentTXOs[inTxID] = append(spentTXOs[inTxID], in.Voutkey)
+					//delete has put in utxo
+					if outputkeys,ok := utxo[txID]; ok{
+						for k,outIdx:= range outputkeys {
+							if outIdx == in.Voutkey {
+								utxo[txID] = append(utxo[txID][:k], utxo[txID][k+1:]...) //从utxo中删除这个outIdx
+								if len(utxo[txID]) == 0 {
+									delete(utxo, txID)
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return utxo
+}
 
 func (bc *BlockChain) FindSpendableOutputs(address string, amount int) (int, map[string][]int) {
 	unspentOutputs := make(map[string][]int)

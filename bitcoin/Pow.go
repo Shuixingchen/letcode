@@ -3,7 +3,6 @@ package bitcoin
 import (
 	"bytes"
 	"crypto/sha256"
-	"fmt"
 	"math"
 	"math/big"
 )
@@ -44,7 +43,6 @@ func (p *Pow)Run()(int,[]byte){
 		hash = sha256.Sum256(data)
 		hashInt.SetBytes(hash[:])
 		if hashInt.Cmp(p.target) == -1 {
-			fmt.Printf("\r%x", hash)
 			break
 		}else{
 			noce++
