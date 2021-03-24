@@ -78,10 +78,10 @@ func (bc *BlockChain)FindUTXO() UTXO{
 	for _,block := range bc.blocks {
 		for _,tx := range block.Transactions {
 			txID := hex.EncodeToString(tx.ID)
-			unsedOutput := make([]int,0)
+			unsedOutput := make(map[int]TXOutput,0)
 		Outputs:
 			//遍历output,找出没有用的output
-			for outIdx, _ := range tx.Vout {
+			for outIdx, out:= range tx.Vout {
 				// Was the output spent?
 				if spentTXOs[txID] != nil {
 					for _, spentOut := range spentTXOs[txID] {
@@ -91,7 +91,7 @@ func (bc *BlockChain)FindUTXO() UTXO{
 					}
 				}
 				//this output was not used
-				unsedOutput = append(unsedOutput, outIdx)
+				unsedOutput[outIdx] = out
 			}
 			utxo[txID] = unsedOutput
 
@@ -102,10 +102,10 @@ func (bc *BlockChain)FindUTXO() UTXO{
 					inTxID := hex.EncodeToString(in.Txid)
 					spentTXOs[inTxID] = append(spentTXOs[inTxID], in.Voutkey)
 					//delete has put in utxo
-					if outputkeys,ok := utxo[inTxID]; ok{
-						for k,outIdx:= range outputkeys {
-							if outIdx == in.Voutkey {
-								utxo[inTxID] = append(utxo[inTxID][:k], utxo[inTxID][k+1:]...) //从utxo中删除这个outIdx
+					if outmap,ok := utxo[inTxID]; ok{
+						for k,_:= range outmap {
+							if k == in.Voutkey {
+								delete(utxo[inTxID],k) //从utxo中删除这个outIdx
 								if len(utxo[inTxID]) == 0 {
 									delete(utxo, inTxID)
 								}
