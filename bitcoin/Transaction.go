@@ -41,9 +41,21 @@ func NewCoinbaseTX(to, data string) *Transaction {
 }
 
 /*
-验证input是否合法
-
+1.验证公钥-地址是否匹配
+2.验证签名是否匹配
 */
+func (in *TXInput)Validate() error{
+	addr := PubKeyToAddress(in.ScriptSig.PubKey)
+	if addr != in.ScriptSig.Address {
+		return errors.New("pubkey wrong")
+	}
+	if RsaVerySignWithSha256(in.Txid, in.ScriptSig.Sig, in.ScriptSig.PubKey) == false {
+		return errors.New("sig validate fail")
+	}
+
+	return nil
+}
+
 func (in *TXInput) CanUnlockOutputWith(unlockingData string) bool {
 	return in.ScriptSig.Sig == unlockingData
 }
@@ -71,7 +83,7 @@ func NewUTXOTransaction(to string, amount int, pubKey []byte, prvKey []byte, bc 
 			scriptsig := ScriptSig{
 				Address: from,
 				PubKey:  pubKey,
-				Sig:     RsaSignWithSha256(txid, prvKey),
+				Sig:     RsaSignWithSha256(txID, prvKey),
 			}
 			input := TXInput{txID, outkey, scriptsig}
 			inputs = append(inputs, input)

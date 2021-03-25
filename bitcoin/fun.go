@@ -60,9 +60,8 @@ func GenRsaKey() (prvkey, pubkey []byte) {
 }
 
 //签名
-func RsaSignWithSha256(data string, prvKey []byte) string {
+func RsaSignWithSha256(databyte []byte, prvKey []byte) string {
 	h := sha256.New()
-	databyte := []byte(data)
 	h.Write(databyte)
 	hashed := h.Sum(nil)
 	block, _ := pem.Decode(prvKey)
@@ -86,8 +85,7 @@ func RsaSignWithSha256(data string, prvKey []byte) string {
 
 
 //验证
-func RsaVerySignWithSha256(data string, signData string, pubkey []byte) bool {
-	databyte := []byte(data)
+func RsaVerySignWithSha256(databyte []byte, signData string, pubkey []byte) bool {
 	signDatabyte := []byte(signData)
 	block, _ := pem.Decode(pubkey)
 	if block == nil {
