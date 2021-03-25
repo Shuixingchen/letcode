@@ -23,10 +23,11 @@ func TestCreateBitcoin(t *testing.T) {
 func TestUTXO(t *testing.T){
 	bc := bitcoin.CreateBlockChain("from")
 	txone := bitcoin.NewUTXOTransaction("from","to", 1,bc)
-	transactions := []*bitcoin.Transaction{txone}
-	bc.AddBlock(transactions)
-	res := bc.FindUTXO()
-	res.Print()
+	txtwo := bitcoin.NewUTXOTransaction("from","three", 1,bc)
+	txthree := bitcoin.NewUTXOTransaction("to","three", 1,bc)
+	ts := []*bitcoin.Transaction{txone,txtwo,txthree}
+	bc.AddBlock(ts)
+	bc.FindUTXO().Print()
 }
 
 

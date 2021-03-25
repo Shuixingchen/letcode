@@ -25,6 +25,7 @@ type Block struct {
 
 type BlockChain struct {
 	blocks []*Block
+	UTXO *UTXO
 }
 
 func CreateBlock(data []*Transaction, preHash []byte) *Block{
@@ -57,7 +58,10 @@ func (b *Block) HashTransactions() []byte {
 func CreateBlockChain(address string) *BlockChain{
 	coinBase := NewCoinbaseTX(address, "")
 	genesis := CreateBlock([]*Transaction{coinBase}, []byte(""))
-	return &BlockChain{[]*Block{genesis}}
+	bc := &BlockChain{[]*Block{genesis}, nil}
+	utxo := bc.FindUTXO()
+	bc.UTXO = &utxo
+	return bc
 }
 
 func (b *BlockChain)AddBlock(data []*Transaction){

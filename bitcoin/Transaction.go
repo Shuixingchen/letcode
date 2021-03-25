@@ -49,7 +49,7 @@ func NewUTXOTransaction(from, to string, amount int, bc *BlockChain) *Transactio
 	var outputs []TXOutput
 	var inputs []TXInput
 
-	acc, validOutputs := bc.FindSpendableOutputs(from, amount)
+	acc, validOutputs := bc.UTXO.FindSpendableOutputs(from, amount)
 
 	if acc < amount {
 		log.Panic("ERROR: Not enough funds from %s",from)
@@ -70,10 +70,10 @@ func NewUTXOTransaction(from, to string, amount int, bc *BlockChain) *Transactio
 		outputs = append(outputs, TXOutput{acc - amount, from}) // a change
 	}
 
-	tx := Transaction{nil, inputs, outputs}
+	tx := &Transaction{nil, inputs, outputs}
 	tx.SetID()
-
-	return &tx
+	bc.UTXO.Update(tx)
+	return tx
 }
 
 func (tx *Transaction) SetID() {
