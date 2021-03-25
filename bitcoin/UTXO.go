@@ -14,14 +14,20 @@ type UTXO map[string]map[int]TXOutput
 /*
 从UTXO找到可用output
 */
-func (utxo UTXO)FindSpendableOutputs(address string, amount int)  (int, map[string][]int){
-	unspentOutputs := make(map[string][]int)
+func (utxo UTXO)FindSpendableOutputs(address string, amount int)  (int, UTXO){
 	accumulated := 0
+	unspentOutputs := make(UTXO)
+	work:
 	for txID,outmap := range utxo {
+		unsedmap := make(map[int]TXOutput)
 		for outkey, out := range outmap {
 			if out.CanBeUnlockedWith(address) {
 				accumulated += out.Value
-				unspentOutputs[txID] = append(unspentOutputs[txID],outkey)
+				unsedmap[outkey] = out
+				unspentOutputs[txID] = unsedmap
+				if accumulated >= amount {
+					break work
+				}
 			}
 		}
 	}

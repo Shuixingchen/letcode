@@ -31,7 +31,9 @@ func GetSHA256HashCode(data interface{}) string{
 	return hashCode
 }
 
-//RSA公钥私钥产生
+/*
+RSA公钥私钥产生,我们用这个作为账户
+ */
 func GenRsaKey() (prvkey, pubkey []byte) {
 	// 生成私钥文件
 	privateKey, err := rsa.GenerateKey(rand.Reader, 1024)
@@ -80,7 +82,6 @@ func RsaSignWithSha256(data string, prvKey []byte) string {
 	}
 
 	return string(signature)
-
 }
 
 
@@ -105,6 +106,11 @@ func RsaVerySignWithSha256(data string, signData string, pubkey []byte) bool {
 	return true
 }
 
+//公钥获取地址,对公钥取hash就是地址
+func PubKeyToAddress(pubKey []byte) string{
+	return GetSHA256HashCode(pubKey)
+}
+
 
 func IntToHex(num int64) []byte {
 	buff := new(bytes.Buffer)
@@ -115,8 +121,5 @@ func IntToHex(num int64) []byte {
 	return buff.Bytes()
 }
 
-func FindOutFromUTXO(txID string, outIds int){
-
-}
 
 
