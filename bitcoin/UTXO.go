@@ -2,6 +2,7 @@ package bitcoin
 
 import (
 	"encoding/hex"
+	"errors"
 	"fmt"
 )
 
@@ -32,6 +33,22 @@ func (utxo UTXO)FindSpendableOutputs(address string, amount int)  (int, UTXO){
 		}
 	}
 	return accumulated,unspentOutputs
+}
+
+
+/*
+根据input找到它对应的output
+*/
+func (utxo UTXO)FindOutput(in *TXInput) (*TXOutput,error){
+	txID := hex.EncodeToString(in.Txid)
+	if outmap,ok := utxo[txID]; ok {
+		if out, k := outmap[in.Voutkey]; k{
+			if out.ScriptPubKey == in.ScriptSig.Address {
+				return &out, nil
+			}
+		}
+	}
+	return nil, errors.New("no found the output")
 }
 
 /*

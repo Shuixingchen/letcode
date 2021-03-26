@@ -33,7 +33,7 @@ func NewCoinbaseTX(to, data string) *Transaction {
 	if data == "" {
 		data = fmt.Sprintf("Reward to '%s'", to)
 	}
-	txin := TXInput{[]byte{}, -1, nil}
+	txin := TXInput{[]byte{}, -1, ScriptSig{	Address: "",PubKey:  nil,Sig:"",}}
 	txout := TXOutput{bonus, to}
 	tx := Transaction{nil, []TXInput{txin}, []TXOutput{txout}}
 	tx.SetID()
@@ -43,17 +43,21 @@ func NewCoinbaseTX(to, data string) *Transaction {
 /*
 1.验证公钥-地址是否匹配
 2.验证签名是否匹配
+3.验证input是否在本地的UTXO中，防止double spending
 */
-func (in *TXInput)Validate() error{
+func (in *TXInput)Validate(bc *BlockChain) (int, error){
 	addr := PubKeyToAddress(in.ScriptSig.PubKey)
 	if addr != in.ScriptSig.Address {
-		return errors.New("pubkey wrong")
+		return 0,errors.New("pubkey wrong")
 	}
 	if RsaVerySignWithSha256(in.Txid, in.ScriptSig.Sig, in.ScriptSig.PubKey) == false {
-		return errors.New("sig validate fail")
+		return 0,errors.New("sig validate fail")
 	}
-
-	return nil
+	out,err := bc.UTXO.FindOutput(in);
+	if err!=nil {
+		return 0,errors.New(err.Error())
+	}
+	return out.Value,nil
 }
 
 func (in *TXInput) CanUnlockOutputWith(unlockingData string) bool {
@@ -100,6 +104,30 @@ func NewUTXOTransaction(to string, amount int, pubKey []byte, prvKey []byte, bc 
 	tx.SetID()
 	bc.UTXO.Update(tx)
 	return tx, nil
+}
+
+/*
+对外界接收到的交易进行验证，验证成功就可以打包到区块
+1.验证每个输入是否合法
+2.验证输入总额是否等于输出
+ */
+func (tx *Transaction) Validate(bc *BlockChain) error{
+	inamount,outamount := 0,0
+	for _, in := range tx.Vin {
+		amount,err := in.Validate(bc)
+		if err!= nil {
+			return errors.New(err.Error())
+		}
+		inamount+=amount
+	}
+	for _,out := range tx.Vout {
+		outamount += out.Value
+	}
+	if inamount != outamount {
+		return errors.New("inamount != outamount")
+	}
+	bc.UTXO.Update(tx)
+	return nil
 }
 
 func (tx *Transaction) SetID() {

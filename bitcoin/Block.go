@@ -55,7 +55,8 @@ func (b *Block) HashTransactions() []byte {
 }
 
 //create
-func CreateBlockChain(address string) *BlockChain{
+func CreateBlockChain(pub []byte) *BlockChain{
+	address := PubKeyToAddress(pub)
 	coinBase := NewCoinbaseTX(address, "")
 	genesis := CreateBlock([]*Transaction{coinBase}, []byte(""))
 	bc := &BlockChain{[]*Block{genesis}, nil}
