@@ -4,5 +4,5 @@ import "letcode/bitcoin"
 
 func main(){
 
-	bitcoin.Run("8080")
+	bitcoin.Serve()
 }

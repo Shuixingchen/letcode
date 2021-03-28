@@ -2,7 +2,10 @@ package bitcoin
 
 import (
 	"github.com/gin-gonic/gin"
+	"letcode/bitcoin/web"
 )
+
+var BC *BlockChain
 
 type TxParam struct {
 	Pub string `form:"pub"`
@@ -12,9 +15,9 @@ type TxParam struct {
 }
 
 func Serve() {
-	bc := CreateBlockChain([]byte("aaa"))
+	BC = CreateBlockChain([]byte("aaa"))
 	txChan := make(chan *TxParam, 10)
-	go Run(bc,txChan)
+	go Run(txChan)
 	for {
 		<-txChan
 	}
@@ -22,17 +25,16 @@ func Serve() {
 }
 
 //使用gin写一个web服务，接收用户转账，查看区块链信息
-func Run(bc *BlockChain, txChan chan *TxParam) {
-	r := SetRouter(bc, txChan)
+func Run(txChan chan *TxParam) {
+	r := SetRouter(txChan)
 	r.Run(":8080")
 }
 
-func SetRouter(bc *BlockChain, txChan chan *TxParam) *gin.Engine{
+func SetRouter(txChan chan *TxParam) *gin.Engine{
 	r := gin.Default()
-	// 获取用户数据路由
-	r.GET("/blockchain", func(c *gin.Context) {
-		bc.Print()
-		c.String(200,res)
-	})
+	r.LoadHTMLGlob("templates/bitcoin/*")
+
+	// 获取区块链数据路由
+	r.GET("/blockchain", web.BlockList)
 	return r
 }
