@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -26,6 +27,7 @@ type Block struct {
 type BlockChain struct {
 	blocks []*Block
 	UTXO *UTXO
+	Mux sync.RWMutex //读写锁
 }
 
 func CreateBlock(data []*Transaction, preHash []byte) *Block{
@@ -59,16 +61,18 @@ func CreateBlockChain(pub []byte) *BlockChain{
 	address := PubKeyToAddress(pub)
 	coinBase := NewCoinbaseTX(address, "")
 	genesis := CreateBlock([]*Transaction{coinBase}, []byte(""))
-	bc := &BlockChain{[]*Block{genesis}, nil}
+	bc := &BlockChain{[]*Block{genesis}, nil, sync.RWMutex{}}
 	utxo := bc.FindUTXO()
 	bc.UTXO = &utxo
 	return bc
 }
 
 func (b *BlockChain)AddBlock(data []*Transaction){
+	b.Mux.Lock()
 	preBlock := b.blocks[len(b.blocks)-1]
 	block := CreateBlock(data, preBlock.Hash)
 	b.blocks = append(b.blocks,block)
+	b.Mux.Unlock()
 }
 
 /*
@@ -77,6 +81,7 @@ transactionid=>uoutputs
  */
 
 func (bc *BlockChain)FindUTXO() UTXO{
+	bc.Mux.RLock()
 	utxo := make(UTXO)
 	spentTXOs := make(map[string][]int)//transactionId=>[output的下标]
 
@@ -121,6 +126,7 @@ func (bc *BlockChain)FindUTXO() UTXO{
 			}
 		}
 	}
+	bc.Mux.RUnlock()
 	return utxo
 }
 
@@ -192,12 +198,18 @@ func (bc *BlockChain) FindUnspentTransactions(address string) []Transaction{
 
 
 
-func (b *BlockChain)Print(){
-	for _,block := range b.blocks {
-		fmt.Printf("pre hash:%x\n",block.PreHash)
-		fmt.Printf("data:%s\n",block.HashTransactions())
-		fmt.Printf("hash:%x\n",block.Hash)
-		fmt.Printf("createTime:%d\n",block.Timestamp)
-		fmt.Println()
+func (bc *BlockChain)Print() map[int]string{
+	bc.Mux.RLock()
+	list := make(map[int]string)
+	for k,block := range bc.blocks {
+		s := ""
+		s += fmt.Sprintf("pre hash:%x\n",block.PreHash)
+		s += fmt.Sprintf("data:%s\n",block.HashTransactions())
+		s += fmt.Sprintf("hash:%x\n",block.Hash)
+		s += fmt.Sprintf("createTime:%d\n",block.Timestamp)
+		s += fmt.Sprintf("\n")
+		list[k] = s
 	}
+	bc.Mux.RUnlock()
+	return list
 }
