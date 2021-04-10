@@ -60,20 +60,20 @@ func (in *TXInput)Validate(bc *BlockChain) (int, error){
 	return out.Value,nil
 }
 
-func (in *TXInput) CanUnlockOutputWith(unlockingData string) bool {
-	return in.ScriptSig.Sig == unlockingData
-}
 
 //解锁这个输出，只有解锁成功，这个输出才能使，暂时用地址来解锁。传进来的地址和输出保存的地址一致，代表成功。
 func (out *TXOutput) CanBeUnlockedWith(unlockingData string) bool {
 	return out.ScriptPubKey == unlockingData
 }
 
+//发起一个交易需要哪些信息
 func NewUTXOTransaction(to string, amount int, pubKey []byte, prvKey []byte, bc *BlockChain) (*Transaction, error) {
 	var outputs []TXOutput
 	var inputs []TXInput
 	from := PubKeyToAddress(pubKey)
+	bc.Mux.RLock()
 	acc, validOutputs := bc.UTXO.FindSpendableOutputs(from, amount)
+	bc.Mux.RUnlock()
 
 	if acc < amount {
 		return nil, errors.New("ERROR: Not enough funds from "+from)
@@ -131,7 +131,7 @@ func (tx *Transaction) Validate(bc *BlockChain) error{
 }
 
 func (tx *Transaction) SetID() {
-	tx.ID = []byte(GetSHA256HashCode(tx))
+	tx.ID,_ = hex.DecodeString(GetSHA256HashCode(tx))
 }
 
 func (tx *Transaction) IsCoinbase() bool{

@@ -11,7 +11,7 @@ import (
 
 const(
 	bonus = 10
-	targetBits = 4
+	targetBits = 24 //难度
 )
 
 
@@ -68,9 +68,9 @@ func CreateBlockChain(pub []byte) *BlockChain{
 }
 
 func (b *BlockChain)AddBlock(data []*Transaction){
-	b.Mux.Lock()
 	preBlock := b.blocks[len(b.blocks)-1]
 	block := CreateBlock(data, preBlock.Hash)
+	b.Mux.Lock()
 	b.blocks = append(b.blocks,block)
 	b.Mux.Unlock()
 }
@@ -130,81 +130,27 @@ func (bc *BlockChain)FindUTXO() UTXO{
 	return utxo
 }
 
-func (bc *BlockChain) FindSpendableOutputs(address string, amount int) (int, map[string][]int) {
-	unspentOutputs := make(map[string][]int)
-	unspentTXs := bc.FindUnspentTransactions(address)
-	accumulated := 0
 
-Work:
-	for _, tx := range unspentTXs {
-		txID := hex.EncodeToString(tx.ID)
-
-		for outIdx, out := range tx.Vout {
-			if out.CanBeUnlockedWith(address) && accumulated < amount {
-				accumulated += out.Value
-				unspentOutputs[txID] = append(unspentOutputs[txID], outIdx)
-
-				if accumulated >= amount {
-					break Work
-				}
-			}
-		}
-	}
-
-	return accumulated, unspentOutputs
+func (bc *BlockChain) FindBlock(key int) *Block{
+	bc.Mux.RLock()
+	block := bc.blocks[key]
+	bc.Mux.RUnlock()
+	return block
 }
 
-/*查询没有使用的交易输出，类似与查询某个地址的余额。
-区块链没有账号统计，所以需要对整条链遍历，输入表示使用，输出表示得到。
-对所有transaction的输出遍历，把属于这个address的transaction写入到unspentTXs;
-对所有transaction的输入遍历，把属于这个address已经花的output写入到spentTXOs;
-*/
-
-func (bc *BlockChain) FindUnspentTransactions(address string) []Transaction{
-	var unspentTXs []Transaction
-	spentTXOs := make(map[string][]int)//transactionId=>[output的下标]
-
-	for _,block := range bc.blocks {
-		for _,tx := range block.Transactions {
-			txID := hex.EncodeToString(tx.ID)
-			Outputs:
-				for outIdx, out := range tx.Vout {
-					// Was the output spent?
-					if spentTXOs[txID] != nil {
-						for _, spentOut := range spentTXOs[txID] {
-							if spentOut == outIdx {
-								continue Outputs
-							}
-						}
-					}
-					if out.CanBeUnlockedWith(address) { //是否属于这个地址的输出
-						unspentTXs = append(unspentTXs, *tx)
-					}
-				}
-
-				if tx.IsCoinbase() == false {
-					for _, in := range tx.Vin {
-						//find spend output
-						if in.CanUnlockOutputWith(address) {
-							inTxID := hex.EncodeToString(in.Txid)
-							spentTXOs[inTxID] = append(spentTXOs[inTxID], in.Voutkey)
-						}
-					}
-				}
-			}
-	}
-	return unspentTXs
+func (bc *BlockChain) High() int{
+	bc.Mux.RLock()
+	heigh := len(bc.blocks)
+	bc.Mux.RUnlock()
+	return heigh
 }
-
-
-
 func (bc *BlockChain)Print() map[int]string{
 	bc.Mux.RLock()
 	list := make(map[int]string)
 	for k,block := range bc.blocks {
 		s := ""
 		s += fmt.Sprintf("pre hash:%x\n",block.PreHash)
-		s += fmt.Sprintf("data:%s\n",block.HashTransactions())
+		//s += fmt.Sprintf("data:%s\n",block.HashTransactions())
 		s += fmt.Sprintf("hash:%x\n",block.Hash)
 		s += fmt.Sprintf("createTime:%d\n",block.Timestamp)
 		s += fmt.Sprintf("\n")

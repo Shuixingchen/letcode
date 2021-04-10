@@ -119,5 +119,9 @@ func IntToHex(num int64) []byte {
 	return buff.Bytes()
 }
 
+func ByteToString(data []byte) string{
+	return hex.EncodeToString(data)
+}
+
 
 
