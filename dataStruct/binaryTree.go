@@ -26,17 +26,28 @@ func NewBinaryTree() *BinaryTree{
 	}
 }
 
+/*
+向二叉搜索树添加元素
+*/
 func (node *binarynode) Add(value int) {
 	if node.value == -1 {
 		node.value = value
 		return
 	}
 	if node.value > value {
-		node.left.Add(value)
+		if node.left != nil {
+			node.left.Add(value)
+		}else{
+			node.left = NewBinaryNode(value)
+		}
 		return
 	}
 	if node.value < value {
-		node.right.Add(value)
+		if node.right != nil {
+			node.right.Add(value)
+		}else{
+			node.right = NewBinaryNode(value)
+		}
 		return
 	}
 }
