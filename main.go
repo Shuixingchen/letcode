@@ -1,8 +1,7 @@
 package main
 
-import "letcode/bitcoin"
+import "letcode/raft"
 
 func main(){
-
-	bitcoin.Serve()
+	raft.HttpServe()
 }

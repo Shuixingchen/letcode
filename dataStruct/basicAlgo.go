@@ -27,4 +27,19 @@ func BinarySearch(data []int, target int) (int){
 	return -1
 }
 
+/*
+冒泡排序
+*/
+func Bubble(data []int) {
+	l := len(data)
+	for i:=0; i<l; i++{
+		for j:=0; j<l-1; j++ {
+			if data[j] > data[j+1] {
+				data[j+1],data[j] = data[j],data[j+1]
+			}
+		}
+	}
+	return
+}
+
 
