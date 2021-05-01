@@ -11,3 +11,7 @@ func TestBinarySearch(t *testing.T){
 	key := dataStruct.BinarySearch(arr,5)
 	fmt.Println(key)
 }
+
+func TestBubble() {
+
+}
