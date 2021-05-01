@@ -10,18 +10,18 @@ func BinarySearch(data []int, target int) (int){
 	if len(data) < 0 {
 		return -1
 	}
-	right := len(data)
+	right := len(data)-1
 	left := 0
-	for i:=0; i<len(data);i++{
+	for left <= right {
 		mid := (left+right)/2
 		if data[mid] == target {
 			return mid
 		}
 		if data[mid] > target{
-			right = mid
+			right = mid-1
 		}
 		if data[mid] < target {
-			left = mid
+			left = mid+1
 		}
 	}
 	return -1

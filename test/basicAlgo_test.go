@@ -7,7 +7,7 @@ import (
 )
 
 func TestBinarySearch(t *testing.T){
-	arr := []int{3,5,2,6,8,9,1}
+	arr := []int{1,2}
 	key := dataStruct.BinarySearch(arr,5)
 	fmt.Println(key)
 }
