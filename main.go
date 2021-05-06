@@ -1,7 +1,8 @@
 package main
 
-import "letcode/raft"
+import "letcode/myrpc"
 
-func main(){
-	raft.HttpServe()
+func main() {
+	//myrpc.ServeRun()
+	myrpc.ClientRun()
 }
