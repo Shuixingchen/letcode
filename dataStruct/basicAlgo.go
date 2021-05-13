@@ -13,12 +13,14 @@ func BinarySearch(data []int, target int) (int){
 	right := len(data)-1
 	left := 0
 	for left <= right {
-		mid := (right+left)/2
+		mid := (left+right)/2
 		if data[mid] == target {
 			return mid
-		}else if data[mid] > target {
+		}
+		if data[mid] > target{
 			right = mid-1
-		}else if data[mid] < target {
+		}
+		if data[mid] < target {
 			left = mid+1
 		}
 	}

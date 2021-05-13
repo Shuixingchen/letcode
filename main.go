@@ -1,7 +1,8 @@
 package main
 
-import "letcode/raft"
+import "letcode/mytcp"
 
-func main(){
-	raft.HttpServe()
+func main() {
+	mytcp.ServeRun()
+	mytcp.ClientRun()
 }
