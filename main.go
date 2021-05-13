@@ -1,8 +1,8 @@
 package main
 
-import "letcode/myrpc"
+import "letcode/myhttp"
 
 func main() {
-	//myrpc.ServeRun()
-	myrpc.ClientRun()
+	//myhttp.HttpServe()
+	myhttp.HttpClient()
 }
