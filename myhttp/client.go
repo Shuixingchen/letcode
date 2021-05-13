@@ -2,16 +2,20 @@ package myhttp
 
 import (
 	"fmt"
-	"io"
+
 	"net/http"
-	"os"
+	"runtime"
 )
 
-func HttpClient() {
-	resp, err := http.Get("https://www.baidu.com/")
-	if err!= nil {
-		fmt.Println(err)
+func ClientRun() {
+	for i:=0;i < 5;i++{
+		resp,err := http.Get("https://baidu.com")
+		if err != nil {
+			fmt.Print("aa")
+		}
+		defer resp.Body.Close()
 	}
-	defer resp.Body.Close()
-	io.Copy(os.Stdout, resp.Body)
+	gnum := runtime.NumGoroutine()
+	defer fmt.Print(gnum)
+	//fmt.Print(resp)
 }

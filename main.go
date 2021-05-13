@@ -1,8 +1,9 @@
 package main
 
-import "letcode/myhttp"
+
+import "letcode/mytcp"
 
 func main() {
-	//myhttp.HttpServe()
-	myhttp.HttpClient()
+	mytcp.ServeRun()
+	mytcp.ClientRun()
 }

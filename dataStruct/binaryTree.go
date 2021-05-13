@@ -27,7 +27,7 @@ func NewBinaryTree() *BinaryTree{
 }
 
 /*
-向二叉搜索树添加元素
+向二叉搜索树添加元素，小的放左边，大的放右边
 */
 func (node *binarynode) Add(value int) {
 	if node.value == -1 {
