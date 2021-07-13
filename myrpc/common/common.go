@@ -2,11 +2,11 @@ package common
 
 //rps客户端的请求参数
 
-type Args struct {
+type Request struct {
 	UserId int
 }
 
-type Reply struct {
+type Response struct {
 	UserId int
 	UserName string
 }

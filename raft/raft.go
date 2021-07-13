@@ -1,35 +1,14 @@
-package raft
+package main
 
-import (
-	"fmt"
-	"github.com/gorilla/mux"
-	"log"
-	"net/http"
-	"sync"
-)
+import "fmt"
 
-type cacheManager struct {
-	data map[string]string
-	sync.RWMutex
+type EventLog struct {
+	TimeStamp    int `json:"timestamp,omitempty"`
+	ContractAddr string    `json:"address"`
+	Name string `json:"name"`
 }
-
-
-func Get(w http.ResponseWriter, r *http.Request){
-	params := mux.Vars(r)
-	key := params["key"]
-	fmt.Println(key)
-}
-
-func Set(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
-	value := params["value"]
-	fmt.Println(key,value)
-}
-
-func HttpServe() {
-	r := mux.NewRouter()
-	r.HandleFunc("/get/{key}", Get)
-	r.HandleFunc("/set/{key}/{value}", Set)
-	log.Fatal(http.ListenAndServe(":8080", r))
+func main(){
+	var list []*EventLog
+	newList := list[:6]
+	fmt.Println(newList)
 }
