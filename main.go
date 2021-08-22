@@ -1,24 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/big"
+)
 
-type Block struct {
-	a int
-}
-type Demo interface{
-	call(int)
-}
-func(b *Block)call(num int){
-	b.a = 11
+type HexBig struct {
+	*big.Int
 }
 
-func List(d Demo){
-	fmt.Println(d)
-}
 func main() {
-	block := Block{
-		1,
-	}
-	block.call(1)
 
+	txFeeTotal := big.NewInt(16253653075803520)
+	baseFeeBurn := big.NewInt(16253653075803520)
+	blockTxFeeReward := new(big.Int)
+	if enough := txFeeTotal.Cmp(baseFeeBurn); enough == 1 {
+		blockTxFeeReward.Sub(txFeeTotal, baseFeeBurn)
+	}
+	TxFee := &HexBig{Int: blockTxFeeReward}
+	fmt.Print(TxFee)
 }

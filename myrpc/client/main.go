@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	client, err := rpc.Dial("tcp", "localhost:1234")
+	rpcClient, err := rpc.Dial("tcp", "localhost:1234")
+	// rpcClient, err := rpc.DialHTTP("tcp", "localhost:8888")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -15,10 +16,9 @@ func main() {
 	var reply common.Response
 	var req common.Request
 	req.UserId = 11
-	err = client.Call("HelloService.Hello", req, &reply)
+	err = rpcClient.Call("eth.Hello", req, &reply)
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	fmt.Println(reply)
+	fmt.Print(reply)
 }

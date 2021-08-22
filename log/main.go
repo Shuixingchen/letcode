@@ -1,16 +1,21 @@
 package main
 
-import "log"
+import (
+	"sync"
 
-//官方自带log,log是多 goroutine 安全的
-
-func init() {
-	log.SetPrefix("TRACE: ") //日志前缀
-	log.SetFlags(log.Ldate | log.Lmicroseconds | log.Llongfile) //显示的信息
-}
+	log "github.com/sirupsen/logrus"
+)
 
 func main() {
-	log.Println("message")
-	log.Fatalln("fatal message")
-	log.Panicln("panic message") //会调用panic
+	var res []int
+	var wg sync.WaitGroup
+	wg.Add(100)
+	for i := 0; i < 100; i++ {
+		go func(i int) {
+			res = append(res, i)
+			wg.Done()
+		}(i)
+	}
+	wg.Wait()
+	log.Info(len(res))
 }
