@@ -2,29 +2,36 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/websocket"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/gorilla/websocket"
 )
+
 /*
 websocket, 首先创建http服务，然后通过upgrader获取websocket连接
 */
-var(
+var (
 	upgrader = websocket.Upgrader{
-		CheckOrigin: func(r *http.Request) bool{
+		CheckOrigin: func(r *http.Request) bool {
 			return true
 		},
 	}
 )
 
 func HandleWs(w http.ResponseWriter, r *http.Request) {
-	var(
+	var (
 		wsConn *websocket.Conn
+		err    error
 	)
-	wsConn,_ = upgrader.Upgrade(w,r, nil)
+	wsConn, err = upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Fatal("upgrade faile:", err)
+	}
 	go SendMsg(wsConn)
-	for{
+	for {
 		msgType, msg, err := wsConn.ReadMessage()
 		if err != nil {
 			fmt.Println(err)
@@ -39,20 +46,20 @@ func HandleWs(w http.ResponseWriter, r *http.Request) {
 func SendMsg(wsConn *websocket.Conn) {
 	ticker := time.NewTicker(time.Second * 3) // 运行时长
 	var i int64
-	for{
+	for {
 		select {
 		case <-ticker.C:
 			i++
-			wsConn.WriteMessage(1,[]byte("send:"+strconv.FormatInt(i,10)))
+			wsConn.WriteMessage(1, []byte("send:"+strconv.FormatInt(i, 10)))
 		}
 	}
 }
 
-
-func main(){
-	http.HandleFunc("/",HandleWs)
+func main() {
+	http.HandleFunc("/", HandleWs)
+	fmt.Printf("listen on:%d", 8080)
 	err := http.ListenAndServe(":8080", nil)
-	if err!= nil {
+	if err != nil {
 		fmt.Println(err)
 	}
 }

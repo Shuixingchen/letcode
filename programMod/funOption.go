@@ -1,7 +1,14 @@
+package programMod
+
 /*
 函数式选项模式
 实例化serve通过传入不同的函数来配置不同的参数
 */
+
+import (
+	"crypto/tls"
+	"time"
+)
 
 type Server struct {
 	Addr     string        //必填

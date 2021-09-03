@@ -1,0 +1,509 @@
+1875  22:17:08.100257 futex(0x60b518, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1874  22:17:08.100326 futex(0xc000080150, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1872  22:17:08.100409 futex(0xc000046950, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1873  22:17:08.100496 futex(0xc000046d50, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1871  22:17:08.100529 restart_syscall(<... resuming interrupted futex ...> <unfinished ...>
+1870  22:17:08.100549 epoll_pwait(5, 0x7ffd390468b0, 128, -1, NULL, 7) = -1 EINTR (Interrupted system call) <7.492871>
+1870  22:17:15.593737 --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1870  22:17:15.593904 rt_sigreturn({mask=[]}) = -1 EINTR (Interrupted system call) <0.000053>
+1870  22:17:15.594112 epoll_pwait(5,  <unfinished ...>
+1871  22:17:28.040519 <... restart_syscall resumed> ) = -1 ETIMEDOUT (Connection timed out) <19.939971>
+1871  22:17:28.040641 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000114>
+1871  22:17:28.040811 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000444>
+1871  22:18:28.041454 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000145>
+1871  22:18:28.041815 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000760>
+1871  22:19:28.043193 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000348>
+1871  22:19:28.043774 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000448>
+1871  22:20:28.044679 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000366>
+1871  22:20:28.045490 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000471>
+1871  22:21:28.046258 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000175>
+1871  22:21:28.046684 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000413>
+1871  22:22:28.047748 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000228>
+1871  22:22:28.048316 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000326>
+1871  22:23:28.048794 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000162>
+1871  22:23:28.049190 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000408>
+1871  22:24:28.049835 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000325>
+1871  22:24:28.050414 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000263>
+1871  22:25:28.050931 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000171>
+1871  22:25:28.051224 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000209>
+1871  22:26:28.051576 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000156>
+1871  22:26:28.051847 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000280>
+1871  22:27:28.052367 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000167>
+1871  22:27:28.052662 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000667>
+1871  22:28:28.053847 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000441>
+1871  22:28:28.054742 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000515>
+1871  22:29:28.055785 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000380>
+1871  22:29:28.056560 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000558>
+1871  22:30:28.057603 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000318>
+1871  22:30:28.058244 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000365>
+1871  22:31:28.058890 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000235>
+1871  22:31:28.059234 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000605>
+1871  22:32:28.060395 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000429>
+1871  22:32:28.061253 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000462>
+1871  22:33:28.062188 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000313>
+1871  22:33:28.062879 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1870  22:33:47.818493 <... epoll_pwait resumed> [{EPOLLIN, {u32=3289124488, u64=140139482058376}}], 128, -1, NULL, 7) = 1 <992.224359>
+1870  22:33:47.818852 futex(0x5de238, FUTEX_WAKE_PRIVATE, 1) = 1 <0.000107>
+1871  22:33:47.819052 <... futex resumed> ) = 0 <19.756093>
+1870  22:33:47.819088 accept4(3,  <unfinished ...>
+1871  22:33:47.819191 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:33:47.819252 <... accept4 resumed> {sa_family=AF_INET6, sin6_port=htons(41136), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 4 <0.000117>
+1871  22:33:47.819501 <... nanosleep resumed> NULL) = 0 <0.000285>
+1871  22:33:47.819648 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:33:47.819703 epoll_ctl(5, EPOLL_CTL_ADD, 4, {EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, {u32=3289124256, u64=140139482058144}}) = 0 <0.000080>
+1871  22:33:47.819869 <... nanosleep resumed> NULL) = 0 <0.000191>
+1870  22:33:47.819899 getsockname(4,  <unfinished ...>
+1871  22:33:47.819924 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:33:47.819944 <... getsockname resumed> {sa_family=AF_INET6, sin6_port=htons(8080), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28]) = 0 <0.000034>
+1871  22:33:47.820049 <... nanosleep resumed> NULL) = 0 <0.000117>
+1870  22:33:47.820074 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4 <unfinished ...>
+1871  22:33:47.820103 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:33:47.820124 <... setsockopt resumed> ) = 0 <0.000034>
+1870  22:33:47.820187 setsockopt(4, SOL_SOCKET, SO_KEEPALIVE, [1], 4 <unfinished ...>
+1871  22:33:47.820254 <... nanosleep resumed> NULL) = 0 <0.000142>
+1870  22:33:47.820293 <... setsockopt resumed> ) = 0 <0.000092>
+1871  22:33:47.820436 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:33:47.820481 setsockopt(4, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0 <0.000059>
+1871  22:33:47.820651 <... nanosleep resumed> NULL) = 0 <0.000193>
+1870  22:33:47.820682 setsockopt(4, SOL_TCP, TCP_KEEPIDLE, [15], 4 <unfinished ...>
+1871  22:33:47.820705 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:33:47.820728 <... setsockopt resumed> ) = 0 <0.000035>
+1871  22:33:47.820889 <... nanosleep resumed> NULL) = 0 <0.000174>
+1870  22:33:47.820934 futex(0xc000046950, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+1871  22:33:47.820973 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:33:47.821047 <... futex resumed> ) = 0 <999.720624>
+1870  22:33:47.821202 <... futex resumed> ) = 1 <0.000254>
+1872  22:33:47.821230 epoll_pwait(5, [{EPOLLIN|EPOLLOUT|EPOLLRDHUP, {u32=3289124256, u64=140139482058144}}], 128, 0, NULL, 0) = 1 <0.000057>
+1871  22:33:47.821338 <... nanosleep resumed> NULL) = 0 <0.000353>
+1872  22:33:47.821369 futex(0xc000080150, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+1871  22:33:47.821397 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:33:47.821445 <... futex resumed> ) = 0 <999.721105>
+1872  22:33:47.821471 <... futex resumed> ) = 1 <0.000090>
+1874  22:33:47.821496 epoll_pwait(5, [], 128, 0, NULL, 0) = 0 <0.000041>
+1871  22:33:47.821566 <... nanosleep resumed> NULL) = 0 <0.000157>
+1874  22:33:47.821594 epoll_pwait(5,  <unfinished ...>
+1872  22:33:47.821621 read(4,  <unfinished ...>
+1871  22:33:47.821647 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:33:47.821670 <... read resumed> "hello", 1024) = 5 <0.000038>
+1870  22:33:47.821707 write(1, "2\n", 2 <unfinished ...>
+1872  22:33:47.821796 write(4, "\346\234\215\345\212\241\345\231\250\347\253\257\345\233\236\345\244\215hello\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1043 <unfinished ...>
+1871  22:33:47.821866 <... nanosleep resumed> NULL) = 0 <0.000209>
+1870  22:33:47.821888 <... write resumed> ) = 2 <0.000171>
+1871  22:33:47.821915 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:33:47.821942 accept4(3, 0xc000055bf0, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable) <0.000064>
+1874  22:33:47.822065 <... epoll_pwait resumed> [{EPOLLIN|EPOLLOUT|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=3289124256, u64=140139482058144}}], 128, -1, NULL, 7) = 1 <0.000461>
+1872  22:33:47.822096 <... write resumed> ) = 1043 <0.000250>
+1874  22:33:47.822119 epoll_pwait(5,  <unfinished ...>
+1872  22:33:47.822142 read(4,  <unfinished ...>
+1874  22:33:47.822176 <... epoll_pwait resumed> [], 128, 0, NULL, 0) = 0 <0.000048>
+1872  22:33:47.822231 <... read resumed> "", 1024) = 0 <0.000081>
+1874  22:33:47.822257 epoll_pwait(5,  <unfinished ...>
+1872  22:33:47.822282 epoll_ctl(5, EPOLL_CTL_DEL, 4, 0xc000050dfc <unfinished ...>
+1871  22:33:47.822304 <... nanosleep resumed> NULL) = 0 <0.000377>
+1872  22:33:47.822328 <... epoll_ctl resumed> ) = 0 <0.000039>
+1871  22:33:47.822354 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:33:47.822382 close(4 <unfinished ...>
+1870  22:33:47.822421 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1872  22:33:47.822457 <... close resumed> ) = 0 <0.000061>
+1872  22:33:47.822623 write(1, "\346\235\245\350\207\252 127.0.0.1:41136 \347\232\204\350\277\236\346\216\245\345\205\263\351\227\255\n", 39 <unfinished ...>
+1871  22:33:47.822665 <... nanosleep resumed> NULL) = 0 <0.000299>
+1871  22:33:47.822739 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:33:47.822777 <... write resumed> ) = 39 <0.000130>
+1872  22:33:47.822832 futex(0xc000046950, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1871  22:33:47.822960 <... nanosleep resumed> NULL) = 0 <0.000199>
+1871  22:33:47.823035 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000553>
+1871  22:34:47.824091 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000387>
+1871  22:34:47.824864 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000468>
+1871  22:35:47.825826 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000377>
+1871  22:35:47.826620 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1874  22:36:00.996550 <... epoll_pwait resumed> [{EPOLLIN, {u32=3289124488, u64=140139482058376}}], 128, -1, NULL, 7) = 1 <133.174275>
+1874  22:36:00.996729 futex(0x5de238, FUTEX_WAKE_PRIVATE, 1) = 1 <0.000094>
+1871  22:36:00.996853 <... futex resumed> ) = 0 <13.170113>
+1874  22:36:00.996943 accept4(3,  <unfinished ...>
+1871  22:36:00.996965 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:36:00.996986 <... accept4 resumed> {sa_family=AF_INET6, sin6_port=htons(41138), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 4 <0.000033>
+1874  22:36:00.997057 epoll_ctl(5, EPOLL_CTL_ADD, 4, {EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, {u32=3289124256, u64=140139482058144}} <unfinished ...>
+1871  22:36:00.997105 <... nanosleep resumed> NULL) = 0 <0.000129>
+1874  22:36:00.997173 <... epoll_ctl resumed> ) = 0 <0.000085>
+1871  22:36:00.997202 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:36:00.997291 getsockname(4, {sa_family=AF_INET6, sin6_port=htons(8080), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28]) = 0 <0.000061>
+1871  22:36:00.997408 <... nanosleep resumed> NULL) = 0 <0.000179>
+1871  22:36:00.997468 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:36:00.997497 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4) = 0 <0.000134>
+1871  22:36:00.997682 <... nanosleep resumed> NULL) = 0 <0.000198>
+1874  22:36:00.997711 setsockopt(4, SOL_SOCKET, SO_KEEPALIVE, [1], 4 <unfinished ...>
+1871  22:36:00.997746 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:36:00.997771 <... setsockopt resumed> ) = 0 <0.000046>
+1874  22:36:00.997828 setsockopt(4, SOL_TCP, TCP_KEEPINTVL, [15], 4) = 0 <0.000038>
+1871  22:36:00.997900 <... nanosleep resumed> NULL) = 0 <0.000144>
+1874  22:36:00.997950 setsockopt(4, SOL_TCP, TCP_KEEPIDLE, [15], 4 <unfinished ...>
+1871  22:36:00.997975 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:36:00.998048 <... setsockopt resumed> ) = 0 <0.000088>
+1874  22:36:00.998169 futex(0xc000046950, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+1871  22:36:00.998224 <... nanosleep resumed> NULL) = 0 <0.000234>
+1874  22:36:00.998248 <... futex resumed> ) = 1 <0.000048>
+1872  22:36:00.998278 <... futex resumed> ) = 0 <133.175430>
+1874  22:36:00.998298 write(1, "2\n", 2 <unfinished ...>
+1872  22:36:00.998321 epoll_pwait(5,  <unfinished ...>
+1871  22:36:00.998341 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:36:00.998364 <... write resumed> ) = 2 <0.000054>
+1872  22:36:00.998385 <... epoll_pwait resumed> [{EPOLLIN|EPOLLOUT|EPOLLRDHUP, {u32=3289124256, u64=140139482058144}}], 128, 0, NULL, 0) = 1 <0.000057>
+1874  22:36:00.998408 accept4(3,  <unfinished ...>
+1872  22:36:00.998429 futex(0x5de550, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+1874  22:36:00.998450 <... accept4 resumed> 0xc000055bf0, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable) <0.000033>
+1872  22:36:00.998473 <... futex resumed> ) = 1 <0.000037>
+1874  22:36:00.998492 epoll_pwait(5,  <unfinished ...>
+1872  22:36:00.998512 read(4,  <unfinished ...>
+1874  22:36:00.998533 <... epoll_pwait resumed> [], 128, 0, NULL, 6058952) = 0 <0.000033>
+1872  22:36:00.998552 <... read resumed> "hello", 1024) = 5 <0.000032>
+1874  22:36:00.998576 epoll_pwait(5,  <unfinished ...>
+1871  22:36:00.998595 <... nanosleep resumed> NULL) = 0 <0.000244>
+1872  22:36:00.998617 write(4, "\346\234\215\345\212\241\345\231\250\347\253\257\345\233\236\345\244\215hello\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1043 <unfinished ...>
+1871  22:36:00.998648 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:36:00.998669 <... futex resumed> ) = 0 <133.176233>
+1870  22:36:00.998727 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1874  22:36:00.998759 <... epoll_pwait resumed> [{EPOLLIN|EPOLLOUT|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=3289124256, u64=140139482058144}}], 128, -1, NULL, 7) = 1 <0.000176>
+1872  22:36:00.998783 <... write resumed> ) = 1043 <0.000147>
+1874  22:36:00.998803 epoll_pwait(5,  <unfinished ...>
+1872  22:36:00.998820 read(4,  <unfinished ...>
+1874  22:36:00.998837 <... epoll_pwait resumed> [], 128, 0, NULL, 0) = 0 <0.000028>
+1871  22:36:00.998856 <... nanosleep resumed> NULL) = 0 <0.000199>
+1874  22:36:00.998874 epoll_pwait(5,  <unfinished ...>
+1871  22:36:00.998892 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:36:00.998957 <... read resumed> "", 1024) = 0 <0.000129>
+1872  22:36:00.999010 epoll_ctl(5, EPOLL_CTL_DEL, 4, 0xc000056dfc <unfinished ...>
+1871  22:36:00.999045 <... nanosleep resumed> NULL) = 0 <0.000145>
+1872  22:36:00.999068 <... epoll_ctl resumed> ) = 0 <0.000038>
+1871  22:36:00.999099 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:36:00.999123 close(4)          = 0 <0.000042>
+1872  22:36:00.999226 write(1, "\346\235\245\350\207\252 127.0.0.1:41138 \347\232\204\350\277\236\346\216\245\345\205\263\351\227\255\n", 39 <unfinished ...>
+1871  22:36:00.999251 <... nanosleep resumed> NULL) = 0 <0.000142>
+1872  22:36:00.999305 <... write resumed> ) = 39 <0.000066>
+1871  22:36:00.999340 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:36:00.999365 futex(0xc000046950, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1871  22:36:00.999486 <... nanosleep resumed> NULL) = 0 <0.000132>
+1871  22:36:00.999548 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000661>
+1871  22:37:01.000799 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000486>
+1871  22:37:01.001654 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000351>
+1871  22:38:01.002345 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000264>
+1871  22:38:01.002780 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000467>
+1871  22:39:01.003567 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000315>
+1871  22:39:01.004154 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1874  22:39:38.785878 <... epoll_pwait resumed> [{EPOLLIN, {u32=3289124488, u64=140139482058376}}], 128, -1, NULL, 7) = 1 <217.786979>
+1874  22:39:38.786016 futex(0x5de238, FUTEX_WAKE_PRIVATE, 1) = 1 <0.000111>
+1871  22:39:38.786174 <... futex resumed> ) = 0 <37.781959>
+1874  22:39:38.786214 accept4(3,  <unfinished ...>
+1871  22:39:38.786242 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:39:38.786264 <... accept4 resumed> {sa_family=AF_INET6, sin6_port=htons(41140), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 4 <0.000037>
+1874  22:39:38.786325 epoll_ctl(5, EPOLL_CTL_ADD, 4, {EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, {u32=3289124256, u64=140139482058144}}) = 0 <0.000044>
+1871  22:39:38.786401 <... nanosleep resumed> NULL) = 0 <0.000149>
+1874  22:39:38.786421 getsockname(4,  <unfinished ...>
+1871  22:39:38.786440 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:39:38.786460 <... getsockname resumed> {sa_family=AF_INET6, sin6_port=htons(8080), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28]) = 0 <0.000032>
+1874  22:39:38.786572 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4 <unfinished ...>
+1871  22:39:38.786613 <... nanosleep resumed> NULL) = 0 <0.000164>
+1874  22:39:38.786643 <... setsockopt resumed> ) = 0 <0.000041>
+1871  22:39:38.786665 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:39:38.786678 setsockopt(4, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0 <0.000050>
+1874  22:39:38.786796 setsockopt(4, SOL_TCP, TCP_KEEPINTVL, [15], 4 <unfinished ...>
+1871  22:39:38.786823 <... nanosleep resumed> NULL) = 0 <0.000147>
+1871  22:39:38.786879 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:39:38.786900 <... setsockopt resumed> ) = 0 <0.000089>
+1874  22:39:38.786946 setsockopt(4, SOL_TCP, TCP_KEEPIDLE, [15], 4) = 0 <0.000034>
+1871  22:39:38.787003 <... nanosleep resumed> NULL) = 0 <0.000116>
+1871  22:39:38.787059 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:39:38.787082 futex(0xc000046950, FUTEX_WAKE_PRIVATE, 1) = 1 <0.000054>
+1872  22:39:38.787168 <... futex resumed> ) = 0 <217.787796>
+1874  22:39:38.787191 write(1, "2\n", 2 <unfinished ...>
+1872  22:39:38.787222 epoll_pwait(5,  <unfinished ...>
+1871  22:39:38.787258 <... nanosleep resumed> NULL) = 0 <0.000188>
+1874  22:39:38.787277 <... write resumed> ) = 2 <0.000069>
+1872  22:39:38.787296 <... epoll_pwait resumed> [{EPOLLIN|EPOLLOUT|EPOLLRDHUP, {u32=3289124256, u64=140139482058144}}], 128, 0, NULL, 0) = 1 <0.000052>
+1874  22:39:38.787318 accept4(3,  <unfinished ...>
+1871  22:39:38.787340 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:39:38.787366 <... accept4 resumed> 0xc000055bf0, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable) <0.000041>
+1872  22:39:38.787388 futex(0x5de550, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+1874  22:39:38.787406 epoll_pwait(5,  <unfinished ...>
+1872  22:39:38.787440 <... futex resumed> ) = 1 <0.000045>
+1874  22:39:38.787481 <... epoll_pwait resumed> [], 128, 0, NULL, 6058952) = 0 <0.000067>
+1872  22:39:38.787501 read(4,  <unfinished ...>
+1871  22:39:38.787535 <... nanosleep resumed> NULL) = 0 <0.000187>
+1870  22:39:38.787549 <... futex resumed> ) = 0 <217.788807>
+1872  22:39:38.787565 <... read resumed> "hello", 1024) = 5 <0.000058>
+1874  22:39:38.787585 epoll_pwait(5,  <unfinished ...>
+1870  22:39:38.787603 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1872  22:39:38.787645 write(4, "\346\234\215\345\212\241\345\231\250\347\253\257\345\233\236\345\244\215hello\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1043 <unfinished ...>
+1874  22:39:38.787794 <... epoll_pwait resumed> [{EPOLLIN|EPOLLOUT|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=3289124256, u64=140139482058144}}], 128, -1, NULL, 7) = 1 <0.000200>
+1872  22:39:38.787836 <... write resumed> ) = 1043 <0.000173>
+1871  22:39:38.787872 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:39:38.787893 epoll_pwait(5, [], 128, 0, NULL, 0) = 0 <0.000115>
+1872  22:39:38.788036 read(4,  <unfinished ...>
+1871  22:39:38.788057 <... nanosleep resumed> NULL) = 0 <0.000176>
+1872  22:39:38.788079 <... read resumed> "", 1024) = 0 <0.000034>
+1874  22:39:38.788103 epoll_pwait(5,  <unfinished ...>
+1872  22:39:38.788124 epoll_ctl(5, EPOLL_CTL_DEL, 4, 0xc000188dfc <unfinished ...>
+1871  22:39:38.788147 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:39:38.788176 <... epoll_ctl resumed> ) = 0 <0.000038>
+1872  22:39:38.788209 close(4)          = 0 <0.000049>
+1871  22:39:38.788290 <... nanosleep resumed> NULL) = 0 <0.000134>
+1872  22:39:38.788315 write(1, "\346\235\245\350\207\252 127.0.0.1:41140 \347\232\204\350\277\236\346\216\245\345\205\263\351\227\255\n", 39 <unfinished ...>
+1871  22:39:38.788352 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:39:38.788400 <... write resumed> ) = 39 <0.000071>
+1872  22:39:38.788487 futex(0xc000046950, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1871  22:39:38.788539 <... nanosleep resumed> NULL) = 0 <0.000176>
+1871  22:39:38.788599 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1870  22:39:42.955764 <... futex resumed> ) = ? ERESTARTSYS (To be restarted if SA_RESTART is set) <4.168125>
+1870  22:39:42.955900 --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1870  22:39:42.955959 rt_sigreturn({mask=[]}) = 202 <0.000038>
+1870  22:39:42.956058 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1871  22:40:38.789188 <... futex resumed> ) = -1 ETIMEDOUT (Connection timed out) <60.000551>
+1871  22:40:38.789632 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000334>
+1871  22:40:38.790359 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000567>
+1871  22:41:38.791485 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000390>
+1871  22:41:38.792256 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000619>
+1871  22:42:38.793370 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000460>
+1871  22:42:38.794287 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000618>
+1871  22:43:38.795444 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000421>
+1871  22:43:38.796256 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000493>
+1871  22:44:38.797249 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000384>
+1871  22:44:38.798011 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000684>
+1871  22:45:38.799204 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000409>
+1871  22:45:38.799986 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000451>
+1871  22:46:38.800973 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000437>
+1871  22:46:38.801828 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1874  22:47:18.398838 <... epoll_pwait resumed> [{EPOLLIN, {u32=3289124488, u64=140139482058376}}], 128, -1, NULL, 7) = 1 <459.610719>
+1874  22:47:18.399021 futex(0x5de238, FUTEX_WAKE_PRIVATE, 1) = 1 <0.000151>
+1871  22:47:18.399230 <... futex resumed> ) = 0 <39.597342>
+1874  22:47:18.399259 accept4(3,  <unfinished ...>
+1871  22:47:18.399285 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:47:18.399321 <... accept4 resumed> {sa_family=AF_INET6, sin6_port=htons(41142), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28], SOCK_CLOEXEC|SOCK_NONBLOCK) = 4 <0.000049>
+1874  22:47:18.399435 epoll_ctl(5, EPOLL_CTL_ADD, 4, {EPOLLIN|EPOLLOUT|EPOLLRDHUP|EPOLLET, {u32=3289124256, u64=140139482058144}} <unfinished ...>
+1871  22:47:18.399484 <... nanosleep resumed> NULL) = 0 <0.000188>
+1874  22:47:18.399503 <... epoll_ctl resumed> ) = 0 <0.000035>
+1871  22:47:18.399524 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:47:18.399549 getsockname(4, {sa_family=AF_INET6, sin6_port=htons(8080), inet_pton(AF_INET6, "::ffff:127.0.0.1", &sin6_addr), sin6_flowinfo=htonl(0), sin6_scope_id=0}, [112->28]) = 0 <0.000042>
+1874  22:47:18.399781 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4 <unfinished ...>
+1871  22:47:18.399820 <... nanosleep resumed> NULL) = 0 <0.000284>
+1874  22:47:18.399842 <... setsockopt resumed> ) = 0 <0.000041>
+1871  22:47:18.399860 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:47:18.399880 setsockopt(4, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0 <0.000113>
+1871  22:47:18.400033 <... nanosleep resumed> NULL) = 0 <0.000164>
+1874  22:47:18.400060 setsockopt(4, SOL_TCP, TCP_KEEPINTVL, [15], 4 <unfinished ...>
+1871  22:47:18.400083 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:47:18.400103 <... setsockopt resumed> ) = 0 <0.000032>
+1874  22:47:18.400214 setsockopt(4, SOL_TCP, TCP_KEEPIDLE, [15], 4 <unfinished ...>
+1871  22:47:18.400259 <... nanosleep resumed> NULL) = 0 <0.000167>
+1874  22:47:18.400286 <... setsockopt resumed> ) = 0 <0.000053>
+1871  22:47:18.400309 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:47:18.400334 futex(0xc000046950, FUTEX_WAKE_PRIVATE, 1) = 1 <0.000049>
+1872  22:47:18.400411 <... futex resumed> ) = 0 <459.611909>
+1874  22:47:18.400431 write(1, "2\n", 2 <unfinished ...>
+1872  22:47:18.400452 epoll_pwait(5,  <unfinished ...>
+1871  22:47:18.400471 <... nanosleep resumed> NULL) = 0 <0.000151>
+1874  22:47:18.400493 <... write resumed> ) = 2 <0.000053>
+1872  22:47:18.400514 <... epoll_pwait resumed> [{EPOLLIN|EPOLLOUT, {u32=3289124256, u64=140139482058144}}], 128, 0, NULL, 0) = 1 <0.000056>
+1874  22:47:18.400538 accept4(3,  <unfinished ...>
+1872  22:47:18.400558 futex(0x5de550, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+1874  22:47:18.400582 <... accept4 resumed> 0xc000055bf0, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable) <0.000037>
+1872  22:47:18.400630 <... futex resumed> ) = 1 <0.000064>
+1874  22:47:18.400651 epoll_pwait(5,  <unfinished ...>
+1872  22:47:18.400687 read(4,  <unfinished ...>
+1874  22:47:18.400711 <... epoll_pwait resumed> [], 128, 0, NULL, 6058952) = 0 <0.000045>
+1872  22:47:18.400733 <... read resumed> "hello", 1024) = 5 <0.000038>
+1874  22:47:18.400756 epoll_pwait(5,  <unfinished ...>
+1872  22:47:18.400789 write(4, "\346\234\215\345\212\241\345\231\250\347\253\257\345\233\236\345\244\215hello\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1043 <unfinished ...>
+1871  22:47:18.400818 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1870  22:47:18.400843 <... futex resumed> ) = 0 <455.444772>
+1872  22:47:18.400885 <... write resumed> ) = 1043 <0.000082>
+1870  22:47:18.400909 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1872  22:47:18.400931 read(4,  <unfinished ...>
+1871  22:47:18.400969 <... nanosleep resumed> NULL) = 0 <0.000140>
+1872  22:47:18.400993 <... read resumed> 0xc00008e800, 1024) = -1 EAGAIN (Resource temporarily unavailable) <0.000053>
+1871  22:47:18.401020 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1872  22:47:18.401045 futex(0xc000046950, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1871  22:47:18.401171 <... nanosleep resumed> NULL) = 0 <0.000138>
+1871  22:47:18.401238 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1870  22:47:25.346176 <... futex resumed> ) = ? ERESTARTSYS (To be restarted if SA_RESTART is set) <6.945245>
+1870  22:47:25.346310 --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1870  22:47:25.346383 rt_sigreturn({mask=[]}) = 202 <0.000031>
+1870  22:47:25.346481 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1874  22:48:06.268828 <... epoll_pwait resumed> [{EPOLLIN|EPOLLOUT|EPOLLRDHUP, {u32=3289124256, u64=140139482058144}}], 128, -1, NULL, 7) = 1 <47.868052>
+1874  22:48:06.268970 futex(0x5de238, FUTEX_WAKE_PRIVATE, 1) = 1 <0.000060>
+1871  22:48:06.269102 <... futex resumed> ) = 0 <47.867851>
+1874  22:48:06.269133 read(4, "", 1024) = 0 <0.000049>
+1871  22:48:06.269244 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:48:06.269278 epoll_ctl(5, EPOLL_CTL_DEL, 4, 0xc0000445fc) = 0 <0.000061>
+1874  22:48:06.269450 close(4 <unfinished ...>
+1871  22:48:06.269476 <... nanosleep resumed> NULL) = 0 <0.000215>
+1871  22:48:06.269540 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:48:06.269628 <... close resumed> ) = 0 <0.000165>
+1871  22:48:06.269695 <... nanosleep resumed> NULL) = 0 <0.000135>
+1871  22:48:06.269759 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000137>
+1871  22:48:06.269979 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:48:06.270058 write(1, "\346\235\245\350\207\252 127.0.0.1:41142 \347\232\204\350\277\236\346\216\245\345\205\263\351\227\255\n", 39) = 39 <0.000131>
+1871  22:48:06.270244 <... nanosleep resumed> NULL) = 0 <0.000248>
+1874  22:48:06.270274 epoll_pwait(5,  <unfinished ...>
+1871  22:48:06.270298 nanosleep({tv_sec=0, tv_nsec=20000},  <unfinished ...>
+1874  22:48:06.270323 <... epoll_pwait resumed> [], 128, 0, NULL, 824634052608) = 0 <0.000040>
+1874  22:48:06.270374 epoll_pwait(5,  <unfinished ...>
+1871  22:48:06.270453 <... nanosleep resumed> NULL) = 0 <0.000142>
+1871  22:48:06.270513 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1870  22:48:15.544460 <... futex resumed> ) = ? ERESTARTSYS (To be restarted if SA_RESTART is set) <50.197954>
+1870  22:48:15.544597 --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1870  22:48:15.544684 rt_sigreturn({mask=[]}) = 202 <0.000060>
+1870  22:48:15.544821 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL) = ? ERESTARTSYS (To be restarted if SA_RESTART is set) <6.996315>
+1870  22:48:22.541300 --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1870  22:48:22.541400 rt_sigreturn({mask=[]}) = 202 <0.000134>
+1870  22:48:22.541619 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL <unfinished ...>
+1871  22:49:06.270985 <... futex resumed> ) = -1 ETIMEDOUT (Connection timed out) <60.000410>
+1871  22:49:06.271338 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000401>
+1871  22:49:06.272159 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000610>
+1871  22:50:06.273347 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000393>
+1871  22:50:06.274125 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000743>
+1871  22:51:06.275409 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000447>
+1871  22:51:06.276258 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000483>
+1871  22:52:06.277263 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000299>
+1871  22:52:06.277854 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000462>
+1871  22:53:06.278704 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000429>
+1871  22:53:06.279435 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000450>
+1871  22:54:06.280110 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000165>
+1871  22:54:06.280426 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000238>
+1871  22:55:06.280833 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000166>
+1871  22:55:06.281094 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000474>
+1871  22:56:06.281831 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000242>
+1871  22:56:06.282306 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000558>
+1871  22:57:06.283332 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000458>
+1871  22:57:06.284101 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000291>
+1871  22:58:06.284808 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000400>
+1871  22:58:06.285535 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000285>
+1871  22:59:06.286145 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000264>
+1871  22:59:06.286623 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000240>
+1871  23:00:06.287161 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000162>
+1871  23:00:06.287431 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000651>
+1871  23:01:06.288523 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000359>
+1871  23:01:06.289221 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000230>
+1871  23:02:06.289605 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000144>
+1871  23:02:06.289900 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000482>
+1871  23:03:06.290801 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000328>
+1871  23:03:06.291494 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000341>
+1871  23:04:06.291973 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000116>
+1871  23:04:06.292155 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000475>
+1871  23:05:06.292886 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000251>
+1871  23:05:06.293364 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000536>
+1871  23:06:06.294200 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000427>
+1871  23:06:06.294845 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000304>
+1871  23:07:06.295352 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000162>
+1871  23:07:06.295679 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000222>
+1871  23:08:06.296021 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000115>
+1871  23:08:06.296204 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000426>
+1871  23:09:06.296971 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000429>
+1871  23:09:06.297598 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000515>
+1871  23:10:06.298647 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000453>
+1871  23:10:06.299391 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000410>
+1871  23:11:06.300094 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000489>
+1871  23:11:06.300799 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000376>
+1871  23:12:06.301586 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000323>
+1871  23:12:06.302216 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000332>
+1871  23:13:06.302850 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000192>
+1871  23:13:06.303237 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000267>
+1871  23:14:06.303826 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000202>
+1871  23:14:06.304168 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000275>
+1871  23:15:06.304663 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000248>
+1871  23:15:06.305163 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000402>
+1871  23:16:06.305779 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000247>
+1871  23:16:06.306151 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000466>
+1871  23:17:06.306903 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000215>
+1871  23:17:06.307320 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000250>
+1871  23:18:06.307877 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000353>
+1871  23:18:06.308340 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000313>
+1871  23:19:06.308784 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000117>
+1871  23:19:06.308970 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000266>
+1871  23:20:06.309470 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000277>
+1871  23:20:06.309972 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000421>
+1871  23:21:06.310882 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000411>
+1871  23:21:06.311633 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000441>
+1871  23:22:06.312490 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000316>
+1871  23:22:06.313191 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000354>
+1871  23:23:06.313966 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000367>
+1871  23:23:06.314620 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000412>
+1871  23:24:06.315349 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000289>
+1871  23:24:06.315785 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000441>
+1871  23:25:06.316484 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000236>
+1871  23:25:06.316911 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000421>
+1871  23:26:06.317616 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000248>
+1871  23:26:06.318020 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000300>
+1871  23:27:06.318480 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000117>
+1871  23:27:06.318677 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000302>
+1871  23:28:06.319169 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000256>
+1871  23:28:06.319572 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000340>
+1871  23:29:06.320221 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000252>
+1871  23:29:06.320763 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000489>
+1871  23:30:06.321646 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000404>
+1871  23:30:06.322332 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000596>
+1871  23:31:06.323428 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000365>
+1871  23:31:06.324107 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000479>
+1871  23:32:06.324874 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000368>
+1871  23:32:06.325406 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000592>
+1871  23:33:06.326428 nanosleep({tv_sec=0, tv_nsec=20000}, NULL) = 0 <0.000374>
+1871  23:33:06.327119 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000224>
+1871  23:34:06.327534 nanosleep({tv_sec=0, tv_nsec=40000}, NULL) = 0 <0.000141>
+1871  23:34:06.327774 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000174>
+1871  23:35:06.328233 nanosleep({tv_sec=0, tv_nsec=80000}, NULL) = 0 <0.000263>
+1871  23:35:06.328599 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000184>
+1871  23:36:06.328926 nanosleep({tv_sec=0, tv_nsec=160000}, NULL) = 0 <0.000273>
+1871  23:36:06.329295 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000247>
+1871  23:37:06.329754 nanosleep({tv_sec=0, tv_nsec=320000}, NULL) = 0 <0.000527>
+1871  23:37:06.330493 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000573>
+1871  23:38:06.331543 nanosleep({tv_sec=0, tv_nsec=640000}, NULL) = 0 <0.001023>
+1871  23:38:06.332877 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000577>
+1871  23:39:06.333943 nanosleep({tv_sec=0, tv_nsec=1280000}, NULL) = 0 <0.001651>
+1871  23:39:06.335867 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000239>
+1871  23:40:06.336262 nanosleep({tv_sec=0, tv_nsec=2560000}, NULL) = 0 <0.002805>
+1871  23:40:06.339164 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000127>
+1871  23:41:06.339438 nanosleep({tv_sec=0, tv_nsec=5120000}, NULL) = 0 <0.005256>
+1871  23:41:06.344814 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000462>
+1871  23:42:06.345737 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010659>
+1871  23:42:06.356738 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000665>
+1871  23:43:06.357882 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010420>
+1871  23:43:06.368515 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000379>
+1871  23:44:06.369366 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010427>
+1871  23:44:06.380178 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000459>
+1871  23:45:06.381159 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010660>
+1871  23:45:06.392319 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000518>
+1871  23:46:06.393319 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010508>
+1871  23:46:06.404137 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000468>
+1871  23:47:06.404903 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010399>
+1871  23:47:06.415546 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000242>
+1871  23:48:06.415978 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010463>
+1871  23:48:06.426710 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000441>
+1871  23:49:06.427492 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010338>
+1871  23:49:06.438045 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0}) = -1 ETIMEDOUT (Connection timed out) <60.000592>
+1871  23:50:06.439089 nanosleep({tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010452>
+1871  23:50:06.449934 futex(0x5de238, FUTEX_WAIT_PRIVATE, 0, {tv_sec=60, tv_nsec=0} <unfinished ...>
+1870  23:50:19.087290 <... futex resumed> ) = ? ERESTARTSYS (To be restarted if SA_RESTART is set) <3716.545642>
+1870  23:50:19.087447 --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1870  23:50:19.087765 rt_sigreturn({mask=[]}) = 202 <0.000065>
+1870  23:50:19.088042 futex(0x5de550, FUTEX_WAIT_PRIVATE, 0, NULL) = ? ERESTARTSYS (To be restarted if SA_RESTART is set) <6.557686>
+1870  23:50:25.649052 --- SIGHUP {si_signo=SIGHUP, si_code=SI_USER, si_pid=887, si_uid=1000} ---
+1870  23:50:25.649103 rt_sigprocmask(SIG_UNBLOCK, [HUP], NULL, 8) = 0 <0.000005>
+1870  23:50:25.649181 getpid()          = 1870 <0.000004>
+1870  23:50:25.649306 gettid()          = 1870 <0.000081>
+1870  23:50:25.649480 tgkill(1870, 1870, SIGHUP) = 0 <0.000045>
+1870  23:50:25.649593 --- SIGHUP {si_signo=SIGHUP, si_code=SI_TKILL, si_pid=1870, si_uid=1000} ---
+1870  23:50:25.649854 rt_sigaction(SIGHUP, {sa_handler=SIG_DFL, sa_mask=~[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x7f74ec813980}, NULL, 8) = 0 <0.000101>
+1870  23:50:25.650172 rt_sigprocmask(SIG_UNBLOCK, [HUP], NULL, 8) = 0 <0.000106>
+1870  23:50:25.650424 getpid()          = 1870 <0.000115>
+1870  23:50:25.650666 gettid()          = 1870 <0.000109>
+1870  23:50:25.650965 tgkill(1870, 1870, SIGHUP) = 0 <0.000049>
+1870  23:50:25.651092 --- SIGHUP {si_signo=SIGHUP, si_code=SI_TKILL, si_pid=1870, si_uid=1000} ---
+1871  23:50:25.651223 <... futex resumed>) = ?
+1875  23:50:25.651256 <... futex resumed>) = ?
+1874  23:50:25.651289 <... epoll_pwait resumed> <unfinished ...>) = ?
+1873  23:50:25.651314 <... futex resumed>) = ?
+1872  23:50:25.651334 <... futex resumed>) = ?
+1875  23:50:25.651558 +++ killed by SIGHUP +++
+1874  23:50:25.651599 +++ killed by SIGHUP +++
+1873  23:50:25.651662 +++ killed by SIGHUP +++
+1872  23:50:25.651696 +++ killed by SIGHUP +++
+1871  23:50:25.651723 +++ killed by SIGHUP +++
+1870  23:50:25.652758 +++ killed by SIGHUP +++

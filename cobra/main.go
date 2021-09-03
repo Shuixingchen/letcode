@@ -1,27 +1,12 @@
 package main
 
-import "fmt"
-
-type base struct {
-	Name string
-}
-
-func (b *base) Add() {
-	b.Name = b.Name + "ddd"
-}
-
-type Newst struct {
-	base
-}
-
-func (n *Newst) Add() {
-	n.Name = "bbb" + "ccc"
-}
+import (
+	"fmt"
+)
 
 func main() {
-	var str Newst
-	str.Name = "aa"
-	str.Add()
-
-	fmt.Println(str.Name)
+	var a uint64 = 10
+	var b uint64 = 100
+	c := a - b
+	fmt.Println(c)
 }
