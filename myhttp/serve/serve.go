@@ -1,19 +1,34 @@
 package serve
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net"
 )
 
-//管理连接
 type Serve struct {
 	Addr string
+	Mux  *ServeMux
 }
 
-func NewServe(addr string) {
-	s := Serve{Addr: addr}
-	s.Listen()
+//管理路由
+type ServerHandler struct {
+	srv *Serve
+}
+
+func (sh ServerHandler) ServeHTTP(rw Response, req *Request) {
+	route := sh.srv.Mux
+	doF, _ := route.Handler(req)
+	doF(rw, req)
+}
+
+func NewServe(addr string) *Serve {
+	return &Serve{Addr: addr, Mux: NewServeMux()}
+}
+
+func (s *Serve) AddFunc(pattern string, handler DoFunc) {
+	s.Mux.Register(pattern, handler)
 }
 
 func (s *Serve) Listen() {
@@ -28,6 +43,7 @@ func (s *Serve) Listen() {
 			log.Fatal("accept faild ", err)
 		}
 		mConn := NewConn(&rw)
-		go mConn.Serve()
+		mConn.Ser = s
+		go mConn.Serve(context.Background())
 	}
 }

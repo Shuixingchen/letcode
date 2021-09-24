@@ -1,12 +1,7 @@
 package main
 
-import (
-	"fmt"
-)
+import "letcode/cobra/cmd"
 
 func main() {
-	var a uint64 = 10
-	var b uint64 = 100
-	c := a - b
-	fmt.Println(c)
+	cmd.Execute()
 }

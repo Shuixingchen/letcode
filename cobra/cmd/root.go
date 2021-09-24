@@ -2,14 +2,19 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"os"
+
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
-var name string
-var age int
+var (
+	name    string
+	age     int
+	cfgFile string
+)
 
-
+//1.创建一个cmd
 var rootCmd = &cobra.Command{
 	Use:   "testCobra",
 	Short: "A test demo",
@@ -26,6 +31,17 @@ var rootCmd = &cobra.Command{
 func init() {
 	rootCmd.Flags().StringVarP(&name, "name", "n", "", "person's name")
 	rootCmd.Flags().IntVarP(&age, "age", "a", 0, "person's age")
+	rootCmd.Flags().StringVar(&cfgFile, "conf", "", "config path")
+	cobra.OnInitialize(initConfig, initDb)
+}
+
+func initConfig() {
+	if cfgFile != "" {
+		viper.SetConfigFile(cfgFile)
+	}
+}
+func initDb() {
+
 }
 
 func Show(name string, age int) {
