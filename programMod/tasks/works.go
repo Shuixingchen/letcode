@@ -12,14 +12,15 @@ import (
 )
 
 //多协程跑脚本任务
-
 type Handler struct {
 	TaskCh      chan int
 	ResultCh    chan string
 	Start       int
 	End         int
-	wg          sync.WaitGroup
+	wgWork      sync.WaitGroup
+	wgConsumer  sync.WaitGroup
 	WorkerNum   int
+	ConsumerNum int
 	InterruptCh chan os.Signal //接受os信号
 	IsClose     bool
 }
@@ -35,9 +36,11 @@ func NewHandler() *Handler {
 		TaskCh:      make(chan int),
 		ResultCh:    make(chan string),
 		Start:       0,
-		End:         10,
-		WorkerNum:   5,
-		wg:          sync.WaitGroup{},
+		End:         100,
+		WorkerNum:   3,
+		ConsumerNum: 3,
+		wgWork:      sync.WaitGroup{},
+		wgConsumer:  sync.WaitGroup{},
 		InterruptCh: make(chan os.Signal),
 		IsClose:     false,
 	}
@@ -63,23 +66,16 @@ func (h *Handler) Serve() {
 	}(h.Start, h.End)
 
 	//2.创建worker,每个worker循环监听任务队列
-	h.wg.Add(h.WorkerNum)
+	h.wgWork.Add(h.WorkerNum)
 	for j := 0; j < h.WorkerNum; j++ {
 		go h.StartWork()
 	}
 
 	//3.返回结果，循环读取结果队列
-	go func() {
-		for res := range h.ResultCh {
-			time.Sleep(1e9)
-			fmt.Println("res:", res)
-		}
-		for {
-			res := <-h.ResultCh
-			time.Sleep(1e9)
-			fmt.Println("res:", res)
-		}
-	}()
+	h.wgConsumer.Add(h.ConsumerNum)
+	for i := 0; i < h.ConsumerNum; i++ {
+		go h.Consumer()
+	}
 	//4.监听系统信号，提前关闭任务
 	go func() {
 		<-h.InterruptCh
@@ -87,16 +83,16 @@ func (h *Handler) Serve() {
 		h.Close()
 	}()
 	//wait是等待worker协程，worker完成后，结果通道也就没有数据写了，要及时关掉
-	h.wg.Wait()
+	h.wgWork.Wait()
 	close(h.ResultCh)
-
+	h.wgConsumer.Wait()
 }
 
 //worker是死循环，任务读完或者有中断信号要退出
 func (h *Handler) StartWork() {
 	defer func() {
-		//time.Sleep(2 * time.Second) //延迟1s让结果处理协程处理
-		h.wg.Done()
+		time.Sleep(1 * time.Second) //延迟1s让结果处理协程处理
+		h.wgWork.Done()
 	}()
 	for {
 		select {
@@ -105,10 +101,17 @@ func (h *Handler) StartWork() {
 				return
 			}
 			res := GetData(t)
-			fmt.Println("input result:", res)
 			h.ResultCh <- res
-		default:
+			fmt.Println("input result:", res)
 		}
+	}
+}
+
+func (h *Handler) Consumer() {
+	defer h.wgConsumer.Done()
+	for res := range h.ResultCh {
+		time.Sleep(1e9)
+		fmt.Println("res:", res)
 	}
 }
 

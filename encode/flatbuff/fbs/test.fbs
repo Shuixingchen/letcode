@@ -1,0 +1,14 @@
+namespace block;
+
+table Block {
+    id: long;
+    hash: string;
+    flag: bool;
+    txs: [Tx];
+}
+table Tx {
+    hash: string;
+    value: double;
+}
+
+root_type Block;

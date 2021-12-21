@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+//函数超时机制，超过时间函数还没有返回，就直接返回超时错误
+
 func Myfunc() string {
 	time.Sleep(1 * time.Second)
 	return "success"

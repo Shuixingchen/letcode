@@ -17,14 +17,14 @@ func main() {
 		if err != nil {
 			fmt.Print("连接出错")
 		}
-		go handlerConn(conn)
+		go handlerConn(conn) //新开启一个协程处理一个连接
 	}
 }
 
 func handlerConn(conn net.Conn) {
 	buf := make([]byte, 16)
 	for {
-		n, err := conn.Read(buf)
+		n, err := conn.Read(buf) //循环读取连接，如果读到close信息，就说明对方已经关闭连接，我们也需要关闭
 		if n == 0 || err != nil {
 			conn.Close()
 			break
