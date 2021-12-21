@@ -19,14 +19,12 @@ func main() {
 	request.Header.Add("Content-type", "application/json")
 
 	//自定义transport
-	proxyFunc := http.ProxyURL(proxyURL)
 	var tlsConfig *tls.Config
 	transport := &http.Transport{
 		Dial: (&net.Dialer{
 			Timeout:   config.GetDuration("rpc.dial_timeout"),
 			KeepAlive: config.GetDuration("rpc.keepalive"),
 		}).Dial,
-		Proxy:                 proxyFunc,
 		TLSClientConfig:       tlsConfig,
 		IdleConnTimeout:       60,
 		ResponseHeaderTimeout: 60,

@@ -41,4 +41,7 @@ func TestMethodType_Call(t *testing.T) {
 	replyv := mType.newReplyv()
 	argv.Set(reflect.ValueOf(Args{Num1: 1, Num2: 3}))
 	err := s.call(mType, argv, replyv)
+	if err != nil {
+		t.Error(err)
+	}
 }
