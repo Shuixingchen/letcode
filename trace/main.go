@@ -24,3 +24,5 @@ func initJaeger(service, addr string) (opentracing.Tracer, io.Closer, error) {
 	opentracing.SetGlobalTracer(tracer)
 	return tracer, closer, err
 }
+
+func main() {}
