@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"strconv"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -52,7 +53,65 @@ func (l *Loader) Query() []Cell {
 	return cells
 }
 
+//通过预处理执行sql DDl语句
+func (l *Loader) Prepare() {
+	sqlInsert := "INSERT Into persons(PersonID, LastName, FirstName, Address, City)values(?, ?, ?, ?, ?)"
+	stmt, err := l.db.Prepare(sqlInsert) //编译sql，并且返回一个stmt
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec(1, "aa", "aa", "aa", "aa") //给这个stmt传参并且执行
+	_, err = stmt.Exec(2, "bb", "bb", "bb", "bb") //给同一个stmt传参并且执行
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+//通过预处理执行query sql
+func (l *Loader) PrepareQ() {
+	sqlQuery := "select * from block where height = ? "
+	stmt, err := l.db.Prepare(sqlQuery)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer stmt.Close()
+	_, err = stmt.Query(1) //对同一个stmt，可以通过传不同的参数，执行不同的sql。
+	_, err = stmt.Query(2)
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+//事务处理
+func (l *Loader) Tx() {
+	tx, err := l.db.Begin()
+	sql1 := "INSERT Into persons(PersonID, LastName, FirstName, Address, City)values(?, ?, ?, ?, ?)"
+	sql2 := "INSERT Into db_info(name, value)values(?, ?)"
+	_, err = tx.Exec(sql1, "cc", "cc", "cc", "cc", "cc") //
+	_, err = tx.Exec(sql2, "name1", "value1")
+	if err != nil {
+		tx.Rollback()
+		fmt.Println(err)
+	}
+	tx.Commit()
+}
+
+//使用预处理语句处理事务
+func (l *Loader) Txs() {
+	sql2 := "INSERT Into db_info(name, value)values(?, ?)"
+	tx, err := l.db.Begin()         //开启一个事务
+	stmt, err := l.db.Prepare(sql2) //开启一个stmt,编译sql
+	for i := 0; i < 100; i++ {
+		_, err = tx.Stmt(stmt).Exec(strconv.Itoa(i), strconv.Itoa(i)) //在事务中执行已存在的stmt语句
+		if err != nil {
+			tx.Rollback()
+		}
+	}
+	tx.Commit()
+}
+
 func main() {
 	loader := NewLoader()
-	fmt.Println(loader)
+	loader.Txs()
 }
