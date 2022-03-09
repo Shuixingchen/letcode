@@ -18,7 +18,7 @@ type Cell struct {
 }
 
 func NewLoader() Loader {
-	dsn := "root:123456@tcp(127.0.0.1:3306)/forge?charset=utf8"
+	dsn := "root:123456@tcp(127.0.0.1:3306)/eth_new_parser?charset=utf8"
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		panic(err)
@@ -110,8 +110,29 @@ func (l *Loader) Txs() {
 	}
 	tx.Commit()
 }
+func (l *Loader) Handler() {
+	sql1 := "select id from block_tmp where id not in (select MAX(id) from block_tmp group by block_number)"
+	rows, err := l.db.Query(sql1)
+	if err != nil {
+		fmt.Println(err)
+	}
+	ids := make([]int, 0)
+	for rows.Next() {
+		var id int
+		err := rows.Scan(&id)
+		if err != nil {
+			fmt.Println(err)
+		}
+		ids = append(ids, id)
+	}
+	var str string
+	for _, i := range ids {
+		str += strconv.Itoa(i) + ","
+	}
+	fmt.Println(str)
+}
 
 func main() {
 	loader := NewLoader()
-	loader.Txs()
+	loader.Handler()
 }

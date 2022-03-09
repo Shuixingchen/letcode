@@ -119,6 +119,10 @@ func MyUint32(b []byte) uint32 {
 	return uint32(b[0])<<24 | uint32(b[1])<<16 | uint32(b[2])<<8 | uint32(b[3])
 }
 
+func stringToByte(str string) {
+	hex.DecodeString(str)
+}
+
 func main() {
 	var num int64 = -2
 	b := IntToBytes(num)

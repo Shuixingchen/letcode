@@ -6,6 +6,7 @@ require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/StackExchange/wmi v0.0.0-20210224194228-fe8f1750fd46 // indirect
 	github.com/boltdb/bolt v1.3.1
+	github.com/btccom/gokit v0.0.0-20220226022344-3a8e54637310
 	github.com/dgraph-io/badger/v3 v3.2103.2
 	github.com/echa/config v1.0.5
 	github.com/ethereum/go-ethereum v1.10.11
@@ -15,6 +16,7 @@ require (
 	github.com/go-ole/go-ole v1.2.5 // indirect
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
+	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang/protobuf v1.5.2
 	github.com/google/flatbuffers v2.0.0+incompatible
@@ -44,4 +46,4 @@ require (
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
 
-replace github.com/btccom/gokit v0.0.0-20211020081244-5d0e34633d7d => ../ethx/gokit/
+replace github.com/btccom/gokit => /home/csx/ethx/gokit

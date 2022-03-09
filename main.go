@@ -2,23 +2,39 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"strconv"
+	"time"
+
+	_ "github.com/go-sql-driver/mysql"
+)
+
+var (
+	SqlExeHighLevel = "heigh"
+	SqlMiddlehLevel = "middle"
+	SqlLevelSep     = "."
 )
 
 func main() {
-	arr := Addslashes("Non-Fungible New Year's Resolutions")
-	fmt.Println(arr)
-}
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Sprintln(r)
+		}
+	}()
+	retCh1 := make(chan string)
+	go func() {
+		for i := 0; i < 100; i++ {
+			retCh1 <- strconv.Itoa(i)
+			time.Sleep(3 * time.Second)
+		}
+	}()
 
-func Addslashes(str string) string {
-	var tmpRune []rune
-	for _, ch := range str {
-		switch ch {
-		case []rune{'\\'}[0], []rune{'"'}[0], []rune{'\''}[0]:
-			tmpRune = append(tmpRune, []rune{'\\'}[0])
-			tmpRune = append(tmpRune, ch)
-		default:
-			tmpRune = append(tmpRune, ch)
+	for {
+		select {
+		case ret := <-retCh1:
+			fmt.Println(ret)
+		case <-time.After(time.Second * 2):
+			log.Panic("subscribe pending time out")
 		}
 	}
-	return string(tmpRune)
 }
