@@ -30,6 +30,7 @@ func main() {
 	fmt.Println(b)
 }
 
+// 解码数据
 func DecodeToBlock(filename string) Block {
 	var (
 		block Block

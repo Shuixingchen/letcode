@@ -17,11 +17,11 @@ go检测内存对齐工具fieldalignment
 安装后使用命令：fieldalignment main.go
 */
 type Part1 struct {
-	a bool  //1
-	b int32 //4
-	c int8  //1
-	d int64 //8
-	e byte  //1
+	a bool  //1  1
+	b int32 //4  4-8
+	c int8  //1  9
+	d int64 //8  16-24
+	e byte  //1  25
 }
 
 func main() {

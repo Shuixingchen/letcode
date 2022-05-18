@@ -1,40 +1,25 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"strconv"
-	"time"
+import "sync"
 
-	_ "github.com/go-sql-driver/mysql"
-)
-
-var (
-	SqlExeHighLevel = "heigh"
-	SqlMiddlehLevel = "middle"
-	SqlLevelSep     = "."
-)
+type Block struct {
+	Height uint64
+	lock   sync.Mutex
+}
 
 func main() {
-	defer func() {
-		if r := recover(); r != nil {
-			fmt.Sprintln(r)
-		}
-	}()
-	retCh1 := make(chan string)
-	go func() {
-		for i := 0; i < 100; i++ {
-			retCh1 <- strconv.Itoa(i)
-			time.Sleep(3 * time.Second)
-		}
-	}()
+	var b Block
+	BadFunc(&b)
+	print(b.Height)
+}
 
-	for {
-		select {
-		case ret := <-retCh1:
-			fmt.Println(ret)
-		case <-time.After(time.Second * 2):
-			log.Panic("subscribe pending time out")
-		}
-	}
+func BadFunc(b *Block) {
+	res := MakeData()
+	b.Height = res.Height
+}
+
+func MakeData() *Block {
+	var nb Block
+	nb.Height = 11
+	return &nb
 }

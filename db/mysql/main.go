@@ -18,7 +18,7 @@ type Cell struct {
 }
 
 func NewLoader() Loader {
-	dsn := "root:123456@tcp(127.0.0.1:3306)/eth_new_parser?charset=utf8"
+	dsn := "root:123456@tcp(127.0.0.1:3306)/eth_parser?charset=utf8&maxAllowedPacket=17108864"
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		panic(err)
@@ -132,7 +132,16 @@ func (l *Loader) Handler() {
 	fmt.Println(str)
 }
 
+func (l *Loader) QueryTx() {
+	str := "select * from transactions where block_number in (0)"
+	rows, err := l.db.QueryRow(str)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println()
+}
+
 func main() {
 	loader := NewLoader()
-	loader.Handler()
+	loader.QueryTx()
 }

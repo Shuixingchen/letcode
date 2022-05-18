@@ -5,8 +5,11 @@ go 1.15
 require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/StackExchange/wmi v0.0.0-20210224194228-fe8f1750fd46 // indirect
+	github.com/antchfx/htmlquery v1.2.4 // indirect
+	github.com/bcext/cashutil v0.0.0-20190126062106-1194a0af0582
+	github.com/bcext/gcash v0.0.0-20190404152342-2e38815af4f2
 	github.com/boltdb/bolt v1.3.1
-	github.com/btccom/gokit v0.0.0-20220226022344-3a8e54637310
+	github.com/btccom/gokit v0.0.0-20220330022434-f20e4a11bf49
 	github.com/dgraph-io/badger/v3 v3.2103.2
 	github.com/echa/config v1.0.5
 	github.com/ethereum/go-ethereum v1.10.11

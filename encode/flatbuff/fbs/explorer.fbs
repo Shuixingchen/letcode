@@ -1,0 +1,189 @@
+//
+// explorer schema for flat buffers
+//
+// @copyright bitmain.com
+// @author zhibiao.pan@bitmain.com
+// @since 2015-11
+//
+namespace fbe;  // flatbuffers explorer
+
+table APIResponse {
+  error_no: int;         // zero means fine, non-zero means error
+  error_msg: string;
+  offset_arr: [int];     // -1: no data
+  length_arr: [int];     // if item's offset is -1, length should be 0
+  type_arr  : [string];  // types, unknown type is empty string ""
+  key_arr  :  [string];  // query keys
+  data: [ubyte];
+}
+
+table TxInput {
+  sequence: uint;
+  script_asm: string;
+  script_hex: string;
+  witness: [string];      // tx input script witness stack
+  prev_tx_hash: string;
+  prev_position: int;     // coinbase tx prev_postion = -1, prev_value = 0
+  prev_value: long;
+  prev_addresses: [string];
+  prev_type: int;
+}
+
+//
+// Output type constants are:
+//
+// ADDR_DISPLAY_TYPE_NONSTANDARD     0x00
+// ADDR_DISPLAY_TYPE_NULL_DATA       0x10
+// ADDR_DISPLAY_TYPE_P2PKH           0x20
+// ADDR_DISPLAY_TYPE_P2PKH_PUBKEY    0x21
+// ADDR_DISPLAY_TYPE_P2PKH_MULTISIG  0x22
+// ADDR_DISPLAY_TYPE_P2SH            0x30
+// ADDR_DISPLAY_TYPE_P2SH_P2WPKH     0x31
+// ADDR_DISPLAY_TYPE_P2SH_P2WSH      0x32
+// ADDR_DISPLAY_TYPE_P2WPKH_V0       0x40
+// ADDR_DISPLAY_TYPE_P2WSH_V0        0x41
+//
+
+table TxOutput {
+  value: long;
+  type: int;             // output type: ADDR_DISPLAY_TYPE_xxxx
+  addresses: [string];
+  script_asm: string;
+  script_hex: string;
+}
+
+// 01_{tx_hash}
+// {tx_hash} in the key is "txid": tx.GetHash().GetHex()
+table Tx {
+  block_height: int;     // -1: means unconfirmed tx
+  block_time: uint;      // 0 when unconfirmed
+  is_coinbase: bool;
+  version: int;
+  lock_time: uint;
+  size: int;
+  sigops: long;
+  fee: long;
+  inputs: [TxInput];
+  inputs_count: int;
+  inputs_value: long;
+  outputs: [TxOutput];
+  outputs_count: int;
+  outputs_value: long;
+  created_at: uint;
+  is_double_spend: bool;
+
+  is_sw_tx: bool;        // if it's segwit tx
+  weight: int;           // weight = (stripped_size * 4) + witness_size
+  vsize: int;            // virtual transaction size: GetVirtualTransactionSize(tx), nearly: weight/4
+  witness_hash: string;  // uint256, witness hash: tx.GetWitnessHash().GetHex()
+}
+
+// 02_{tx_hash}_{position}
+table TxSpentBy {
+  position: int;
+  tx_hash: string;
+}
+
+// 03_{tx_hash}
+table UnconfirmedTx {
+  tx_hash: string;
+  fee: long;
+  size: int;
+}
+
+// 11_{block_hash}
+table Block {
+  height: int;
+  version: int;
+  mrkl_root: string;
+  timestamp: uint;
+  bits: uint;
+  nonce: uint;
+  prev_block_hash: string;  // uin256 hex, will be zero if no prev block
+  next_block_hash: string;  // uin256 hex, will be zero if no next block
+  size: int;
+  pool_difficulty: long;
+  difficulty: double;
+  tx_count: uint;
+  reward_block: long;
+  reward_fees: long;
+  created_at: uint;
+  is_orphan: bool;          // if it's orphan block
+  curr_max_timestamp: uint; // the largest timestamp so far
+
+  is_sw_block: bool;        // if it's segwit block
+  stripped_size: int;       // stripped_size = total_size - witness_size
+  weight: int;              // weight = (stripped_size * 4) + witness_size
+}
+
+// 12_{block_hash}_{n}
+table BlockTxsHash {
+  hash_str: string;
+}
+
+// 20_{address}
+table Address {
+  received: long;
+  sent: long;
+	tx_count: int;
+  unconfirmed_tx_count: int;
+  unconfirmed_received: long;
+  unconfirmed_sent: long;
+  unspent_tx_count: int;
+  unspent_tx_max_index: int;
+  last_confirmed_tx_index: int;
+}
+
+// 21_{address}_{index}
+table AddressTx {
+  balance_diff: long;
+  tx_hash: string;
+  tx_height: int;       // -1 means unconfirmed tx
+  tx_block_time: uint;  // 0 when unconfirmed
+}
+
+// 23_{address}_{index}
+table AddressUnspent {
+  value: long;
+  tx_hash: string;
+  position: int;
+  position2: short;  // 16 bit: short ushort
+}
+
+// 24_{address}_{tx_hash}_{position}
+table AddressUnspentIdx {
+  index: int;
+}
+
+// 30_{tx_hash}_{position}
+table DoubleSpending {
+  txs: [string];
+}
+
+
+//
+// for lite version
+//
+// key: 01_{tx_hash}_{010position}
+table TxOutputLite {
+  value: long;
+  addresses: [string];
+  script_bin: string;   // scriptPubKey binary data
+}
+
+// key: 02_{address_hash_str}
+table AddressLite {
+  tx_count: int;
+  received: long;
+  sent: long;
+  begin_tx_ymd: int;
+  end_tx_ymd: int;
+}
+
+// key: 03_{010height}
+table BlockLite {
+  height: int;
+  timestamp: uint;
+  hash: string;
+  prev_hash: string;
+}

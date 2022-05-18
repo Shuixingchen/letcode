@@ -58,6 +58,11 @@ func HexToBytes(hexstr string) []byte {
 	return b
 }
 
+// 字节转十六进制字符
+func BytesToHex(b []byte) string {
+	return hex.EncodeToString(b)
+}
+
 //unpack() 把字节数组为整数, 字节数组为大端序
 func ByteToInt(b []byte) int64 {
 	bytesBuffer := bytes.NewBuffer(b)
@@ -124,11 +129,9 @@ func stringToByte(str string) {
 }
 
 func main() {
-	var num int64 = -2
-	b := IntToBytes(num)
-	fmt.Println(b)
-	// res1 := BigEndianBytesToInt(b)
-	// fmt.Println(res1)
-	// res := ByteToInt(b)
-	// fmt.Println(res)
+	str := "0x000000000000000000000000ef0031812faca5e803b13fca55abe9836356066a"
+	str = str[2:]
+	fmt.Println(str)
+	res := HexToBytes(str)
+	fmt.Println(res)
 }

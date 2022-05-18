@@ -7,6 +7,7 @@ pragma solidity ^0.8.6;
 interface ERC721 {
 
     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    event TransferOld(address from, address to, uint256 tokenId);
     event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
     // erc1155的event
@@ -16,13 +17,18 @@ interface ERC721 {
     // OpenSea的sale
     event OrdersMatched(bytes32 buyHash, bytes32 sellHash, address indexed maker, address indexed taker, uint price, bytes32 indexed metadata);
     event OrderCancelled(bytes32 indexed hash);
-
+    function atomicMatch_(address[14] memory addrs,uint[18] memory uints,uint8[8] memory feeMethodsSidesKindsHowToCalls,bytes memory calldataBuy,bytes memory calldataSell,bytes memory replacementPatternBuy,bytes memory replacementPatternSell,bytes memory staticExtradataBuy,bytes memory staticExtradataSell,uint8[2] memory vs,bytes32[5] memory rssMetadata)external payable; 
+    
     function balanceOf(address _owner) external pure returns (uint256);
     function ownerOf(uint256 _tokenId) external pure returns (address);
     
     function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes memory data) external payable;
     function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;
-    function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) external;
     
     function approve(address _approved, uint256 _tokenId) external payable;
     function getApproved(uint256 _tokenId) external view returns (address);
@@ -32,6 +38,7 @@ interface ERC721 {
     function name() external pure returns (string memory);
     function symbol() external pure returns (string memory);
     function tokenURI(uint256 _tokenId) external view returns (string memory);
+    function uri(uint256 id) external view returns (string memory);
 
     // erc1155的nft
     function balanceOfBatch(address[] calldata accounts, uint256[] calldata ids) external view returns (uint256[] memory);
