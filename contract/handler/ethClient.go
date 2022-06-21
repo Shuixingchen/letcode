@@ -15,11 +15,11 @@ var (
 
 func init() {
 	var err error
-	ec, err = ethclient.Dial("https://mainnet.infura.io/v3/40b043c639b44d72966d3535d523a4b3")
+	ec, err = ethclient.Dial("https://polygon-mumbai.g.alchemy.com/v2/_4xDtlTKWmynPDVaX1JfRvysRif0wZ85")
 	if err != nil {
 		log.Fatal(err)
 	}
-	ecw, err = ethclient.Dial("wss://ropsten.infura.io/ws/v3/40b043c639b44d72966d3535d523a4b3")
+	ecw, err = ethclient.Dial("wss://polygon-mumbai.g.alchemy.com/v2/_4xDtlTKWmynPDVaX1JfRvysRif0wZ85")
 	if err != nil {
 		log.Fatal(err)
 	}

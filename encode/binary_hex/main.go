@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
+	"math/big"
 )
 
 //pack() 把数据转为字节数组
@@ -124,14 +125,21 @@ func MyUint32(b []byte) uint32 {
 	return uint32(b[0])<<24 | uint32(b[1])<<16 | uint32(b[2])<<8 | uint32(b[3])
 }
 
-func stringToByte(str string) {
-	hex.DecodeString(str)
+// 字符串转big.Int
+func StringToBigInt() {
+	i := new(big.Int)
+	i.SetString("360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc", 16) // 第一个参数传字符串，第二个是进制，8就是8进制
+	fmt.Println(i)
+}
+
+// 字节数组转big.Int
+func BytesToBigInt() {
+	i := new(big.Int)
+	src, _ := hex.DecodeString("0x11")
+	i.SetBytes(src)
+	fmt.Println(i)
 }
 
 func main() {
-	str := "0x000000000000000000000000ef0031812faca5e803b13fca55abe9836356066a"
-	str = str[2:]
-	fmt.Println(str)
-	res := HexToBytes(str)
-	fmt.Println(res)
+	StringToBigInt()
 }

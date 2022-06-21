@@ -114,7 +114,7 @@ type ParamsAtomicMatch_ struct {
 }
 
 func AccountInfo() {
-	account := common.HexToAddress("0x71c7656ec7ab88b098defb751b7401b5f6d8976f")
+	account := common.HexToAddress("0xe725D38CC421dF145fEFf6eB9Ec31602f95D8097")
 	balance, err := ec.BalanceAt(context.Background(), account, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -706,6 +706,26 @@ func IsNFTByClient(tokenAddr string) int {
 	}
 	fmt.Println("tokenType:", ttype)
 	return ttype
+}
+
+func ListenEvent() {
+	contractAddress := common.HexToAddress("0xf4272c09B933a2d4Db1d916E282cE1394fc2cd60")
+	query := ethereum.FilterQuery{
+		Addresses: []common.Address{contractAddress},
+	}
+	logs := make(chan types.Log)
+	sub, err := ecw.SubscribeFilterLogs(context.Background(), query, logs)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for {
+		select {
+		case err := <-sub.Err():
+			log.Fatal(err)
+		case vLog := <-logs:
+			fmt.Println(vLog) // pointer to event log
+		}
+	}
 }
 
 // func GetBlockData(blockNumber int64) {

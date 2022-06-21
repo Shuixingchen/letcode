@@ -1,7 +1,8 @@
 package handler
 
 import (
-	"crypto/sha256"
+	"bytes"
+	"crypto/ecdsa"
 	"encoding/hex"
 	"fmt"
 	"log"
@@ -51,31 +52,89 @@ const (
 	_INTERFACE_ID_ERC721_ENUMERABLE = "0x780e9d63"
 )
 
-// 使用eth对消息进行签名，并且验证签名人
+// ECDSA验证签名
+// 前提条件：签名，原始数据以及签名者的公钥/地址
+func VerifySig(msg, signature string) bool {
+	// 1.准备公钥
+	privateKey, err := crypto.HexToECDSA("19935d89cb5c67657c64a6383d601e30f04eb179a0369227403e5343bba22107")
+	if err != nil {
+		log.Fatal(err)
+	}
+	publicKey := privateKey.Public()
+	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
+	if !ok {
+		log.Fatal("cannot assert type: publicKey is not of type *ecdsa.PublicKey")
+	}
+	publicKeyBytes := crypto.FromECDSAPub(publicKeyECDSA)
 
-func VerifySig(signAddr, msg, sig string) bool {
+	// 2.原始数据的hash, hash算法要与签名时的一致
+	msgHash := crypto.Keccak256Hash([]byte(msg))
+
+	// 3. 调用Ecrecover（椭圆曲线签名恢复）来检索签名者的公钥
+	sig, _ := hex.DecodeString(signature)
+	sigPublicKey, err := crypto.Ecrecover(msgHash.Bytes(), sig)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("sigPublicKey:", hex.EncodeToString(sigPublicKey))
+	// fmt.Println("publicKeyBytes:", hex.EncodeToString(publicKeyBytes))
+	// 4.比较公钥是否一致
+	matches := bytes.Equal(sigPublicKey, publicKeyBytes)
+	fmt.Println("VerifySig", matches)
+	return matches
+}
+
+// ECDSA验证签名
+// 前提条件，签名，原始数据，签名者地址
+func VerifySig2(msg, signature, addr string) bool {
+
+	// 1. 调用Ecrecover（椭圆曲线签名恢复）来检索签名者的公钥
+	msgHash := crypto.Keccak256Hash([]byte(msg))
+	sig, _ := hex.DecodeString(signature)
+	sigPublicKey, err := crypto.SigToPub(msgHash.Bytes(), sig)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// 2.公钥得到地址
+	//使用Keccak256函数手动完成地址解析
+	// hash := sha3.NewLegacyKeccak256()
+	// hash.Write(sigPublicKey[1:])
+	// fmt.Println(hexutil.Encode(hash.Sum(nil)[12:]))
+
+	signAddr := crypto.PubkeyToAddress(*sigPublicKey).Hex()
+
+	// 3.对比两个地址是否一致
+	// matches := strings.EqualFold(addr, signAddr)
+	fmt.Println("addr", addr, "signAddr", signAddr)
+	// fmt.Println("VerifySig2", matches)
 	return false
 }
 
-func SigMessage(msg string) {
-	msgHash := sha256.Sum256([]byte(msg))
-	// 准备私钥
-	pkeyb, err := hex.DecodeString(privateHex)
+// ECDSA签名
+func SignMessage(msg string) string {
+	// 1.准备私钥
+	privateKey, err := crypto.HexToECDSA("19935d89cb5c67657c64a6383d601e30f04eb179a0369227403e5343bba22107")
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal(err)
 	}
-	// 基于secp256k1的私钥
-	pkey, err := crypto.ToECDSA(pkeyb)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	// 签名,会得到65字节数据，
-	sig, err := crypto.Sign(msgHash[:], pkey)
+	// 2.先对数据进行hash,再用私钥签名,会得到65字节数据，
+	msgHash := crypto.Keccak256Hash([]byte(msg))
+	sig, err := crypto.Sign(msgHash[:], privateKey)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("sig length:", len(sig))
 	fmt.Println("sig hex:", hex.EncodeToString(sig))
+	return hex.EncodeToString(sig)
+}
+
+func VerifyHandler() {
+	message := "adfadf"
+	addr := "0xe725D38CC421dF145fEFf6eB9Ec31602f95D8097"
+	signature := SignMessage(message)
+	VerifySig2(message, signature, addr)
+	VerifySig(message, signature)
 }
 
 // func GetToenInterfaceId() {

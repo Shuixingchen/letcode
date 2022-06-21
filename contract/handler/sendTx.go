@@ -37,9 +37,7 @@ func SendTx() {
 func singTx() (*types.Transaction, error) {
 	// 一、ABI编码请求参数
 	methodId := crypto.Keccak256([]byte("setA(uint256)"))[:4] // 只要前4个字节
-	fmt.Println("methodId: ", common.Bytes2Hex(methodId))
 	paramValue := math.U256Bytes(new(big.Int).Set(big.NewInt(123)))
-	fmt.Println("paramValue: ", common.Bytes2Hex(paramValue))
 	input := append(methodId, paramValue...)
 	fmt.Println("input: ", common.Bytes2Hex(input))
 
@@ -67,6 +65,7 @@ func singTx() (*types.Transaction, error) {
 	return sigTransaction, nil
 }
 
+// 验证交易，比较签名恢复得到的地址与tx.sender
 func ParseAddressFromSigTx() {
 	sigTransaction, err := singTx()
 	if err != nil {
