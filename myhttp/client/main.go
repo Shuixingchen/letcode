@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"net"
 	"net/http"
-
-	"github.com/echa/config"
 )
 
 func main() {
@@ -21,10 +19,7 @@ func main() {
 	//自定义transport
 	var tlsConfig *tls.Config
 	transport := &http.Transport{
-		Dial: (&net.Dialer{
-			Timeout:   config.GetDuration("rpc.dial_timeout"),
-			KeepAlive: config.GetDuration("rpc.keepalive"),
-		}).Dial,
+		Dial:                  (&net.Dialer{}).Dial,
 		TLSClientConfig:       tlsConfig,
 		IdleConnTimeout:       60,
 		ResponseHeaderTimeout: 60,

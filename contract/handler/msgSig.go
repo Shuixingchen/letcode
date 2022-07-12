@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
@@ -90,6 +91,8 @@ func VerifySig(msg, signature string) bool {
 func VerifySig2(msg, signature, addr string) bool {
 
 	// 1. 调用Ecrecover（椭圆曲线签名恢复）来检索签名者的公钥
+	data := []byte(msg)
+	msg = fmt.Sprintf("\x19Ethereum Signed Message:\n%d%s", len(data), string(data))
 	msgHash := crypto.Keccak256Hash([]byte(msg))
 	sig, _ := hex.DecodeString(signature)
 	sigPublicKey, err := crypto.SigToPub(msgHash.Bytes(), sig)
@@ -119,6 +122,9 @@ func SignMessage(msg string) string {
 		log.Fatal(err)
 	}
 	// 2.先对数据进行hash,再用私钥签名,会得到65字节数据，
+	// 3.大部分钱包签名的时候会加个前缀
+	data := []byte(msg)
+	msg = fmt.Sprintf("\x19Ethereum Signed Message:\n%d%s", len(data), string(data))
 	msgHash := crypto.Keccak256Hash([]byte(msg))
 	sig, err := crypto.Sign(msgHash[:], privateKey)
 	if err != nil {
@@ -129,12 +135,28 @@ func SignMessage(msg string) string {
 	return hex.EncodeToString(sig)
 }
 
+func SignAccount(msg string) string {
+	// 1.准备私钥
+	privateKey, err := crypto.HexToECDSA("19935d89cb5c67657c64a6383d601e30f04eb179a0369227403e5343bba22107")
+	if err != nil {
+		log.Fatal(err)
+	}
+	msgHash, _ := accounts.TextAndHash([]byte(msg))
+	sig, err := crypto.Sign(msgHash[:], privateKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("sig length:", len(sig))
+	fmt.Println("sig hex:", hex.EncodeToString(sig))
+	return hex.EncodeToString(sig)
+}
+
 func VerifyHandler() {
-	message := "adfadf"
+	message := "Hello World!"
 	addr := "0xe725D38CC421dF145fEFf6eB9Ec31602f95D8097"
-	signature := SignMessage(message)
+	signature := SignAccount(message)
 	VerifySig2(message, signature, addr)
-	VerifySig(message, signature)
+	// VerifySig(message, signature)
 }
 
 // func GetToenInterfaceId() {

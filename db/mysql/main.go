@@ -134,11 +134,9 @@ func (l *Loader) Handler() {
 
 func (l *Loader) QueryTx() {
 	str := "select * from transactions where block_number in (0)"
-	rows, err := l.db.QueryRow(str)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println()
+	row := l.db.QueryRow(str)
+
+	fmt.Println(row)
 }
 
 func main() {

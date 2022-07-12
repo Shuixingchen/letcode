@@ -1,4 +1,4 @@
-package algorithm
+package dataStruct
 
 //前缀树，字典树
 

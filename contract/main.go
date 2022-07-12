@@ -36,7 +36,8 @@ func main() {
 	// handler.ParseENSRegister("0x27ab7b42b7858f2f69f5985ecc31d7cd6a8eb6e66109bf8308562050b53bcb9d")
 	// handler.SignMessage("sign my message")
 	// handler.VerifySig("sign my message", "8b3f09cc8a49582c6ded832a8062a8f5bf66a701224e83d3c569681a0b6436de0bb22d3f21546c4c4b6a78f7c36322080d4e28a35791fbe80124396c85a5502a00")
-	handler.VerifyHandler()
+	// handler.VerifyHandler()
+	handler.Uniswap()
 }
 func ExecERC() {
 	// handler.ExecERC20("0x17eb0d548306372293C67A7DAD5c6bCBfE5593F8", "0xdd132adb1a045ff37575a86734f153d8fcec90b1")
