@@ -15,6 +15,8 @@ func main() {
 		log.Fatal(err)
 	}
 	defer conn.Close()
+
+	// new rpcClient, 每个service都有一个client
 	client := protos.NewHelloServiceClient(conn)
 	reply, err := client.Hello(context.Background(), &protos.Request{Value: "aaa"})
 	if err != nil {

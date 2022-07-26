@@ -1,4 +1,4 @@
-package main
+package benchmark
 
 import (
 	"bytes"
@@ -6,6 +6,8 @@ import (
 	"math/rand"
 	"strings"
 )
+
+// 字符串拼接效率对比
 
 const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

@@ -7,29 +7,38 @@ import (
 	"strconv"
 	"sync"
 	"time"
+
+	"github.com/patrickmn/go-cache"
 )
 
 var zkey = "lala"
 
 func main() {
-	rc, err := redis.New("127.0.0.1:6379", "123456", 0)
-	if err != nil {
-		log.Fatal(err)
+	c := cache.New(5*time.Minute, 10*time.Minute)
+
+	// Set the value of the key "foo" to "bar", with the default expiration time
+	c.Set("foo", "bar", cache.DefaultExpiration)
+
+	// Set the value of the key "baz" to 42, with no expiration time
+	// (the item won't be removed until it is re-set, or removed using
+	// c.Delete("baz")
+	c.Set("baz", 42, cache.NoExpiration)
+
+	// Since Go is statically typed, and cache values can be anything, type
+	// assertion is needed when values are being passed to functions that don't
+	// take arbitrary types, (i.e. interface{}). The simplest way to do this for
+	// values which will only be used once--e.g. for passing to another
+
+	type MyStruct struct {
+		ID int
 	}
-	var wg sync.WaitGroup
-	wg.Add(2)
-	now := time.Now().Unix()
-	var delStart int64
-	delStart = 1641716417
-	go InitZSet(rc, &wg)
-
-	time.Sleep(5 * time.Second)
-	res4, err := rc.ZRevRange(zkey, 0, 5)
-	res5, err := rc.ZCount(zkey, strconv.FormatInt(now, 10), strconv.FormatInt(now+5, 10))
-	res6, err := rc.ZRemRangeByScore(zkey, strconv.FormatInt(delStart, 10), strconv.FormatInt(now-60, 10))
-
-	fmt.Println(res4, res5, res6)
-	wg.Wait()
+	var m MyStruct
+	m.ID = 1
+	c.Set("foo", &m, cache.DefaultExpiration)
+	if x, found := c.Get("foo"); found {
+		foo := x.(*MyStruct)
+		fmt.Println(foo)
+	}
 }
 
 func InitZSet(rc *redis.Client, wg *sync.WaitGroup) {
