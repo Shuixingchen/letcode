@@ -1,6 +1,9 @@
 package minidb
 
-import "os"
+import (
+	"errors"
+	"os"
+)
 
 // 基于LSM树实现kv数据库
 
@@ -25,5 +28,45 @@ func Open(path string) (*MiniDB, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &MiniDB{LogFile: logFile}, nil
+	db := &MiniDB{
+		LogFile: logFile,
+		Indexs:  make(map[string]int64),
+		path:    path,
+	}
+	db.LoadIndexFromFile()
+	return db, nil
+}
+
+func (db *MiniDB) LoadIndexFromFile() {
+
+}
+
+func (db *MiniDB) Set(key, value []byte) error {
+	offset := db.LogFile.Offset
+	// 封装entry
+	entry := NewEntry(key, value, SET)
+	// 写入log文件
+	err := db.LogFile.Write(entry)
+	if err != nil {
+		return err
+	}
+	// 写到内存索引
+	db.Indexs[string(key)] = offset
+	return nil
+}
+
+func (db *MiniDB) Get(key []byte) (value []byte, err error) {
+	offset, ok := db.Indexs[string(key)]
+	if !ok {
+		return []byte{}, errors.New("key not exist")
+	}
+	e, err := db.LogFile.Read(offset)
+	if err != nil {
+		return []byte{}, err
+	}
+	return e.Value, nil
+}
+
+func (db *MiniDB) Merge() {
+
 }

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"letcode/mygin/middleware"
+
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 )
@@ -19,10 +21,10 @@ func Hello3(c *gin.Context) {
 
 func main() {
 	r := gin.Default()
+	r.Use(middleware.UseOpenTracing())
 	r.GET("/", Hello1)
 	versionRoute := r.Group("/v1")
-	versionRoute.GET("/token/:addr", Hello)
-	versionRoute.GET("/account/txns_all/data", Hello1)
-	versionRoute.GET("/token/:token_addr/acct/:acct_addr", Hello3)
+	versionRoute.GET("/token", Hello)
+
 	r.Run(":8888") // listen and serve on 0.0.0.0:8080
 }

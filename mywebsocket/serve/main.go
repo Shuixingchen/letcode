@@ -57,7 +57,6 @@ func SendMsg(wsConn *websocket.Conn) {
 
 func main() {
 	http.HandleFunc("/", HandleWs)
-	fmt.Printf("listen on:%d", 8080)
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println(err)

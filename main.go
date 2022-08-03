@@ -1,57 +1,37 @@
 package main
 
 import (
-	"bytes"
-	"fmt"
-	"math/rand"
-	"strings"
+	// Standard library packages
+
+	"log"
+	"net"
+	"net/http"
+	"text/template"
+
+	// Third party packages
+
+	"github.com/julienschmidt/httprouter"
+	"github.com/skratchdot/open-golang/open"
 )
 
-const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+// go get github.com/toqueteos/webbrowser
 
-func randomString(n int) string {
-	b := make([]byte, n)
-	for i := range b {
-		b[i] = letterBytes[rand.Intn(len(letterBytes))]
+func main() {
+	l, err := net.Listen("tcp", "localhost:3000")
+	if err != nil {
+		log.Fatal(err)
 	}
-	return string(b)
+	r := httprouter.New()
+	// Add a handler on /test
+	r.GET("/test", testHandler)
+
+	open.RunWith("http://localhost:3000/test", "chrome")
+	// Start the blocking server loop
+	http.Serve(l, r)
 }
 
-func plusConcat(n int, str string) string {
-	s := ""
-	for i := 0; i < n; i++ {
-		s += str
-	}
-	return s
-}
-
-func sprintfConcat(n int, str string) string {
-	s := ""
-	for i := 0; i < n; i++ {
-		s = fmt.Sprintf("%s%s", s, str)
-	}
-	return s
-}
-func builderConcat(n int, str string) string {
-	var builder strings.Builder
-	for i := 0; i < n; i++ {
-		builder.WriteString(str)
-	}
-	return builder.String()
-}
-
-func bufferConcat(n int, s string) string {
-	buf := new(bytes.Buffer)
-	for i := 0; i < n; i++ {
-		buf.WriteString(s)
-	}
-	return buf.String()
-}
-
-func byteConcat(n int, str string) string {
-	buf := make([]byte, 0)
-	for i := 0; i < n; i++ {
-		buf = append(buf, str...)
-	}
-	return string(buf)
+func testHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	t, _ := template.ParseFiles("view/index.html", "view/head.html", "view/foot.html")
+	//执行主模版,主要调用的方法
+	t.ExecuteTemplate(w, "layout", nil)
 }
