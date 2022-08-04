@@ -3,8 +3,8 @@ package dataStruct
 import "fmt"
 
 /*
-双向链表
-Root->next
+双向循环链表
+Root->node1->node2->Root
 */
 type DCnode struct {
 	Data string

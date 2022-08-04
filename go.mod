@@ -24,6 +24,7 @@ require (
 	github.com/onsi/ginkgo v1.16.5 // indirect
 	github.com/onsi/gomega v1.19.0 // indirect
 	github.com/opentracing/opentracing-go v1.1.0
+	github.com/panjf2000/ants v1.3.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/pkg/errors v0.9.1
 	github.com/segmentio/kafka-go v0.4.33

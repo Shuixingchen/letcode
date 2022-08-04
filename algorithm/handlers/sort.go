@@ -18,7 +18,6 @@ import (
 然后对桶内的数据分配排序。
 
 */
-
 func Bubble() {
 	list := []int{2, 76, 3, 4}
 	l := len(list)
@@ -37,21 +36,14 @@ func Bubble() {
 	fmt.Println(list)
 }
 
-func InsertSort() {
-	list := []int{2, 76, 3, 4}
-	l := len(list)
-	for i := 1; i < l; i++ {
-		value := list[i]
-		j := i - 1
-		// 在左侧寻找value插入的位置
-		for ; j >= 0; j-- {
-			if list[j] > value {
-				list[j+1] = list[j]
-			} else {
-				break
+func InsertSort(list []int) {
+	for i := 1; i < len(list); i++ {
+		// 对于每个i相当于向左冒泡
+		for j := i - 1; j >= 0; j-- {
+			if list[j] > list[j+1] {
+				list[j], list[j+1] = list[j+1], list[j]
 			}
 		}
-		list[j+1] = value
 	}
 	fmt.Println(list)
 }

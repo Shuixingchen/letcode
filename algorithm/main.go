@@ -11,13 +11,13 @@ func main() {
 	// DoubleChain()
 	// handlers.SingleChainReverse()
 	// handlers.Bubble()
-	// handlers.InsertSort()
+	handlers.InsertSort([]int{1, 5, 9, 3})
 	// MergeSort()
 	// BinaryTree()
 	// Heap()
 	// handlers.Permute([]int{5, 4, 6, 2})
 	// handlers.BinarySearch([]int{5, 9}, 5)
-	handlers.FindSub("adfabcg", "abc")
+	// handlers.FindSub("adfabcg", "abc")
 }
 func SingleChain() {
 	sc := dataStruct.NewSingleChain([]string{"1", "2", "3"})
