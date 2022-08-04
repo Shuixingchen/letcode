@@ -17,6 +17,7 @@ func main() {
 	var wg sync.WaitGroup
 	param := os.Args[1]
 	num, _ := strconv.Atoi(param)
+	fmt.Println("tcp num :", num)
 	wg.Add(num)
 	for i := 0; i < num; i++ {
 		go start(rows[i][0], &wg)
