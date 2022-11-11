@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -34,4 +35,29 @@ func main() {
 	}
 	response, err := client.Do(request)
 	fmt.Println(response)
+}
+
+// 设置请求time out
+func RequestTime() {
+	timer := time.NewTimer(5 * time.Second)
+	req, _ := http.NewRequest("get", "https://xtz.getblock.io/mainnet/chains", http.NoBody)
+	DoRequest(timer, req)
+}
+func DoRequest(timer *time.Timer, request *http.Request) (*http.Response, error) {
+	type resType struct {
+		response *http.Response
+		err      error
+	}
+	done := make(chan resType, 0)
+	go func() {
+		var res resType
+		res.response, res.err = http.DefaultClient.Do(request)
+		done <- res
+	}()
+	select {
+	case res := <-done:
+		return res.response, res.err
+	case <-timer.C:
+		return nil, fmt.Errorf("request time out")
+	}
 }

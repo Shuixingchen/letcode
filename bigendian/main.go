@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/binary"
+	"encoding/hex"
 	"fmt"
 )
 
@@ -18,17 +19,14 @@ Little-endian（小端序）：数据的高位字节存放在地址的高端 低
 */
 
 func main() {
-	//00000001 00101100
-	//1        44
-	var aa uint16 = 300
-	buf1 := make([]byte, 2) //两个字节就可以存300
-	buf2 := make([]byte, 2)
-	binary.BigEndian.PutUint16(buf1, aa)
-	fmt.Println("大端序：", buf1)
-	binary.LittleEndian.PutUint16(buf2, aa)
-	fmt.Println("小端序：", buf2)
-	fmt.Printf("第一个字节地址：%p,第二个字节地址：%p \n", &buf2[0], &buf2[1])
-	buf3 := make([]byte, 4)
-	binary.BigEndian.PutUint32(buf3, uint32(aa))
-	fmt.Println("大端序：", buf2)
+	byteToInt()
+}
+
+func byteToInt() {
+	b, err := hex.DecodeString("008e060000000000")
+	if err != nil {
+		fmt.Println(err)
+	}
+	num := binary.LittleEndian.Uint64(b)
+	fmt.Println(b, num)
 }

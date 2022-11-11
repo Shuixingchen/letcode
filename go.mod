@@ -3,6 +3,8 @@ module letcode
 go 1.16
 
 require (
+	github.com/ClickHouse/clickhouse-go/v2 v2.3.0
+	github.com/PaesslerAG/jsonpath v0.1.1
 	github.com/bcext/cashutil v0.0.0-20190126062106-1194a0af0582
 	github.com/bcext/gcash v0.0.0-20190404152342-2e38815af4f2
 	github.com/boltdb/bolt v1.3.1
@@ -19,7 +21,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/flatbuffers v2.0.0+incompatible
 	github.com/gorilla/websocket v1.5.0
-	github.com/julienschmidt/httprouter v1.3.0
+	github.com/lib/pq v1.2.0
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/onsi/ginkgo v1.16.5 // indirect
 	github.com/onsi/gomega v1.19.0 // indirect
@@ -36,13 +38,10 @@ require (
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/ugorji/go v1.2.6 // indirect
 	golang.org/x/exp v0.0.0-20220426173459-3bcf042a4bf5 // indirect
-	golang.org/x/net v0.0.0-20220722155237-a158d28d115b // indirect
-	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
-	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 // indirect
-	golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f // indirect
+	golang.org/x/sys v0.0.0-20220823224334-20c2bfdbfe24 // indirect
 	google.golang.org/genproto v0.0.0-20210617175327-b9e0b3197ced // indirect
 	google.golang.org/grpc v1.38.0
-	google.golang.org/protobuf v1.27.1
+	google.golang.org/protobuf v1.28.1
 )
 
 replace github.com/btccom/gokit => /home/csx/ethx/gokit

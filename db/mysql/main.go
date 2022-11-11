@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"strconv"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -18,7 +19,7 @@ type Cell struct {
 }
 
 func NewLoader() Loader {
-	dsn := "root:123456@tcp(127.0.0.1:3306)/eth_parser?charset=utf8&maxAllowedPacket=17108864"
+	dsn := "root:123456@tcp(127.0.0.1:3306)/eth_parser?charset=utf8"
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		panic(err)
@@ -53,7 +54,7 @@ func (l *Loader) Query() []Cell {
 	return cells
 }
 
-//通过预处理执行sql DDl语句
+// 通过预处理执行sql DDl语句
 func (l *Loader) Prepare() {
 	sqlInsert := "INSERT Into persons(PersonID, LastName, FirstName, Address, City)values(?, ?, ?, ?, ?)"
 	stmt, err := l.db.Prepare(sqlInsert) //编译sql，并且返回一个stmt
@@ -68,7 +69,7 @@ func (l *Loader) Prepare() {
 	}
 }
 
-//通过预处理执行query sql
+// 通过预处理执行query sql
 func (l *Loader) PrepareQ() {
 	sqlQuery := "select * from block where height = ? "
 	stmt, err := l.db.Prepare(sqlQuery)
@@ -83,21 +84,30 @@ func (l *Loader) PrepareQ() {
 	}
 }
 
-//事务处理
+// 事务处理
 func (l *Loader) Tx() {
-	tx, err := l.db.Begin()
-	sql1 := "INSERT Into persons(PersonID, LastName, FirstName, Address, City)values(?, ?, ?, ?, ?)"
-	sql2 := "INSERT Into db_info(name, value)values(?, ?)"
-	_, err = tx.Exec(sql1, "cc", "cc", "cc", "cc", "cc") //
-	_, err = tx.Exec(sql2, "name1", "value1")
-	if err != nil {
-		tx.Rollback()
-		fmt.Println(err)
+	count := 5
+	for {
+		count++
+		tx, err := l.db.Begin()
+		sql1 := "INSERT Into parser_map_info(height, hash)values(?, ?)"
+		_, err = tx.Exec(sql1, count, "aa")
+		if err != nil {
+			tx.Rollback()
+			fmt.Println("exec error:", err)
+			fmt.Println("start ping:")
+			l.db.Ping()
+			continue
+		}
+		tx.Commit()
+		time.Sleep(2 * time.Second)
 	}
-	tx.Commit()
+}
+func (l *Loader) Ping() error {
+	return l.db.Ping()
 }
 
-//使用预处理语句处理事务
+// 使用预处理语句处理事务
 func (l *Loader) Txs() {
 	sql2 := "INSERT Into db_info(name, value)values(?, ?)"
 	tx, err := l.db.Begin()         //开启一个事务
@@ -141,5 +151,5 @@ func (l *Loader) QueryTx() {
 
 func main() {
 	loader := NewLoader()
-	loader.QueryTx()
+	loader.Tx()
 }
